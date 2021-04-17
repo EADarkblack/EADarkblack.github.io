@@ -1,0 +1,36 @@
+@import "./variables.scss";
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+// Mobile version
+
+header{
+    .blueBarTop{
+        background-color: $mainColor;
+        width: 100%;
+        height: 0.31rem;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        .logo{
+            height: 3.05rem;
+            width: 3.05rem;
+            margin: 1.81rem 0 1.08rem 1.38rem;
+        }
+        .hamMenu{
+            span{
+                display: block;
+                width: 0.94rem;
+                height: 0.125rem;
+                margin-bottom: 0.188rem;
+                background-color: $mainColor;
+                border-radius: 20%;
+            }
+        }
+    }
+}

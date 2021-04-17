@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:ital@1&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+header .blueBarTop {
+  background-color: #572ee5;
+  width: 100%;
+  height: 0.31rem;
+}
+
+header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header nav .logo {
+  height: 3.05rem;
+  width: 3.05rem;
+  margin: 1.81rem 0 1.08rem 1.38rem;
+}
+
+header nav .hamMenu span {
+  display: block;
+  width: 0.94rem;
+  height: 0.125rem;
+  margin-bottom: 0.188rem;
+  background-color: #572ee5;
+  border-radius: 20%;
+}
+/*# sourceMappingURL=style.css.map */
