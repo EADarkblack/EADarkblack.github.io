@@ -1,4 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap");
+.theme {
+  --backgroundColor: #ffffff;
+  --sectionBackgroundColor: #f3f5f8;
+  --mainColor: #572ee5;
+  --barColor: #572ee5;
+  --hamMenuColor: #572ee5e6;
+  --inputText: #000000;
+}
+
+.theme--dark {
+  --backgroundColor: #37383c;
+  --sectionBackgroundColor: #222326;
+  --mainColor: #ffffff;
+  --barColor: #000000;
+  --hamMenuColor: #000000e6;
+  --inputText: #ffffff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,49 +24,53 @@
 }
 
 /* Header y nav menu */
-header .blueBarTop {
-  background-color: #572ee5;
+body {
+  background-color: var(--backgroundColor);
+}
+
+body header .blue-bar-top {
+  background-color: var(--barColor);
   width: 100%;
   height: 0.31rem;
 }
 
-header nav {
+body header nav {
   height: 5.938rem;
 }
 
-header nav .logo {
+body header nav .logo svg {
   height: 3.05rem;
   width: 3.05rem;
   margin: 1.81rem 0 1.08rem 1.38rem;
 }
 
-header nav .hamMenu {
+body header nav .logo svg #GIFOS {
+  fill: var(--mainColor);
+}
+
+body header nav .hamMenu {
   /* para mostrar menu cambiar el display a flex. */
 }
 
-header nav .hamMenu .checkbox {
-  z-index: 1;
-  height: 0.88rem;
-  width: 0.94rem;
-  opacity: 0;
+body header nav .hamMenu .burguer-icon {
   position: absolute;
   top: 3.25rem;
   right: 1.63rem;
 }
 
-header nav .hamMenu .burguer-menu {
-  height: 0.88rem;
+body header nav .hamMenu .burguer-icon span {
+  display: block;
   width: 0.94rem;
-  position: absolute;
-  top: 3.25rem;
-  right: 1.63rem;
+  height: 0.125rem;
+  margin-bottom: 0.3rem;
+  background-color: var(--mainColor);
 }
 
-header nav .hamMenu ul {
+body header nav .hamMenu ul {
   position: absolute;
   top: 6.25rem;
   list-style: none;
-  background-color: #572ee5e6;
+  background-color: var(--hamMenuColor);
   height: 100%;
   overflow: hidden;
   width: 100%;
@@ -62,14 +84,14 @@ header nav .hamMenu ul {
           align-items: center;
 }
 
-header nav .hamMenu ul li:nth-child(2n) {
+body header nav .hamMenu ul li:nth-child(2n) {
   height: 0.01rem;
   width: 2.56rem;
   background-color: #ffffff;
   margin: 0;
 }
 
-header nav .hamMenu ul li {
+body header nav .hamMenu ul li {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #ffffff;
@@ -79,26 +101,36 @@ header nav .hamMenu ul li {
   margin: 2rem 0 0.69rem 0;
 }
 
-header nav .hamMenu ul li:nth-child(2n + 3) {
+body header nav .hamMenu ul li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+body header nav .hamMenu ul li:nth-child(2n + 3) {
   margin: 0.87rem 0 0.69rem 0;
 }
 
-main {
+body header nav .hamMenu ul li:nth-last-child(1) {
+  display: none;
+}
+
+body main {
   /* Search Section */
+  /* New Search Section */
   /* Trending Section */
 }
 
-main .search-section {
-  margin: 0.44rem 0 2.81rem 0;
+body main .search-section {
+  margin: 0.44rem 0 0 0;
 }
 
-main .search-section .title-search-section {
+body main .search-section .title-search-section {
   margin: 0 2.75rem 1.94rem 2.81rem;
 }
 
-main .search-section .title-search-section h1 {
+body main .search-section .title-search-section h1 {
   font-family: "Montserrat", sans-serif;
-  color: #572ee5;
+  color: var(--mainColor);
   font-size: 1.56rem;
   letter-spacing: 0;
   line-height: 2.06rem;
@@ -106,11 +138,11 @@ main .search-section .title-search-section h1 {
   font-weight: bold;
 }
 
-main .search-section .title-search-section h1 span {
+body main .search-section .title-search-section h1 span {
   color: #5ed7c6;
 }
 
-main .search-section .searcher {
+body main .search-section .searcher {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,70 +156,76 @@ main .search-section .searcher {
   margin: 0 1.31rem 0 1.25rem;
 }
 
-main .search-section .searcher img {
+body main .search-section .searcher img {
   height: 8.13rem;
   width: 17.06rem;
 }
 
-main .search-section .searcher .search-bar {
+body main .search-section .searcher .search-bar-style {
   height: 3.13rem;
   width: 19rem;
-  border: 0.063rem solid #572ee5;
+  border: 0.063rem solid var(--mainColor);
   border-radius: 1.688rem;
 }
 
-main .search-section .searcher .search-bar::-webkit-input-placeholder {
+body main .search-section .searcher .search-bar-style .search-bar {
+  background-color: var(--backgroundColor);
+  color: var(--inputText);
+  height: 3.13rem;
+  width: 13.44rem;
+  margin-left: 3.44rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.19rem;
+}
+
+body main .search-section .searcher .search-bar-style .search-bar::-webkit-input-placeholder {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.19rem;
   letter-spacing: 0;
   color: #6b7989;
-  padding: 0.94rem 0 0.81rem 3.44rem;
 }
 
-main .search-section .searcher .search-bar:-ms-input-placeholder {
+body main .search-section .searcher .search-bar-style .search-bar:-ms-input-placeholder {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.19rem;
   letter-spacing: 0;
   color: #6b7989;
-  padding: 0.94rem 0 0.81rem 3.44rem;
 }
 
-main .search-section .searcher .search-bar::-ms-input-placeholder {
+body main .search-section .searcher .search-bar-style .search-bar::-ms-input-placeholder {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.19rem;
   letter-spacing: 0;
   color: #6b7989;
-  padding: 0.94rem 0 0.81rem 3.44rem;
 }
 
-main .search-section .searcher .search-bar::placeholder {
+body main .search-section .searcher .search-bar-style .search-bar::placeholder {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.19rem;
   letter-spacing: 0;
   color: #6b7989;
-  padding: 0.94rem 0 0.81rem 3.44rem;
 }
 
-main .search-section .searcher .icon-search {
+body main .search-section .searcher .search-bar-style .icon-search {
   position: relative;
-  bottom: 2.3rem;
-  left: 8rem;
+  top: 0.2rem;
+  right: 0.3rem;
 }
 
-main .search-section .content-search-section {
+body main .search-section .content-search-section {
   margin-top: 1.94rem;
-  position: relative;
-  top: -1.25rem;
   text-align: center;
 }
 
-main .search-section .content-search-section h2 {
+body main .search-section .content-search-section h2 {
   font-family: "Montserrat", sans-serif;
-  color: #572ee5;
+  color: var(--mainColor);
   font-size: 1rem;
   letter-spacing: 0;
   line-height: 1.56rem;
@@ -195,26 +233,35 @@ main .search-section .content-search-section h2 {
   margin-bottom: 0.13rem;
 }
 
-main .search-section .content-search-section p {
+body main .search-section .content-search-section p {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  color: #572ee5;
+  color: var(--mainColor);
   font-size: 0.88rem;
   letter-spacing: 0;
   line-height: 1.56rem;
   margin: 0 4.69rem 0 4.69rem;
 }
 
-main .trending-section {
+body main .new-search-section {
+  margin: 2.19rem 0 4.94rem 0;
+}
+
+body main .new-search-section .bar-section {
+  height: 0.06rem;
+  width: 9.81rem;
+}
+
+body main .trending-section {
   background-color: #f3f5f8;
 }
 
-main .trending-section .trending-section-content {
+body main .trending-section .trending-section-content {
   padding-top: 2.88rem;
   text-align: center;
 }
 
-main .trending-section .trending-section-content h2 {
+body main .trending-section .trending-section-content h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #572ee5;
@@ -224,7 +271,7 @@ main .trending-section .trending-section-content h2 {
   margin-bottom: 0.44rem;
 }
 
-main .trending-section .trending-section-content p {
+body main .trending-section .trending-section-content p {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   letter-spacing: 0;
@@ -232,12 +279,366 @@ main .trending-section .trending-section-content p {
   margin: 0 1.31rem 2rem 1.31rem;
 }
 
-main .trending-section .trending-img {
+body main .trending-section .trending-img {
   padding-bottom: 5.13rem;
 }
 
-main .trending-section .trending-img img {
+body main .trending-section .trending-img img {
   height: 11.69rem;
   width: 15.19rem;
+}
+
+body footer {
+  text-align: center;
+}
+
+body footer .footer-elements .footer-title {
+  margin: 2.94rem 0 1.5rem 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.13rem;
+}
+
+body footer .footer-elements .social-media {
+  margin: 0 0 2.99rem 0;
+}
+
+body footer .footer-elements .social-media img {
+  margin-right: 1.19rem;
+}
+
+body footer .footer-elements .copyright {
+  margin-bottom: 1.44rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0;
+  line-height: 1.25rem;
+}
+
+body footer .blue-bar-bot {
+  background-color: #572ee5;
+  width: 100%;
+  height: 0.31rem;
+}
+
+@media screen and (min-width: 1220px) {
+  /* Desktop header */
+  body {
+    /* Desktop Footer */
+  }
+  body header nav {
+    height: 5.63rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  body header nav .logo svg {
+    height: 3.69rem;
+    width: 3.69rem;
+    margin: 1.13rem 0 0.81rem 9.75rem;
+  }
+  body header nav .hamMenu .burguer-icon span {
+    display: none;
+  }
+  body header nav .hamMenu ul {
+    position: unset;
+    top: 0;
+    background-color: unset;
+    height: unset;
+    overflow: unset;
+    width: unset;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 8.13rem 5.06rem 4.44rem 3.38rem;
+        grid-template-columns: 8.13rem 5.06rem 4.44rem 3.38rem;
+    -webkit-column-gap: 2.59rem;
+            column-gap: 2.59rem;
+    margin: 1.13rem 9.75rem 1.13rem 0;
+  }
+  body header nav .hamMenu ul li:nth-child(2n) {
+    display: none;
+  }
+  body header nav .hamMenu ul li {
+    color: #572ee5;
+    font-size: 0.81rem;
+    line-height: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  body header nav .hamMenu ul li a {
+    color: #572ee5;
+  }
+  body header nav .hamMenu ul li:nth-child(2n + 3) {
+    margin: 0;
+  }
+  body header nav .hamMenu ul li:nth-last-child(1) {
+    display: block;
+  }
+  body main {
+    /* Desktop Search Section */
+    /* Desktop Trending Section */
+  }
+  body main .search-section {
+    margin: 4.75rem 0 5.94rem 0;
+  }
+  body main .search-section .title-search-section {
+    margin: 0 0 1.5rem 0;
+  }
+  body main .search-section .title-search-section h1 {
+    font-size: 2.19rem;
+    line-height: 3.13rem;
+  }
+  body main .search-section .searcher {
+    margin: 0 0 0 0;
+  }
+  body main .search-section .searcher img {
+    height: 11.88rem;
+    width: 24.94rem;
+  }
+  body main .search-section .searcher .search-bar-style {
+    width: 34.44rem;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar {
+    width: 27rem;
+    margin-left: 3.38rem;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar::-webkit-input-placeholder {
+    color: #9cafc3;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar:-ms-input-placeholder {
+    color: #9cafc3;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar::-ms-input-placeholder {
+    color: #9cafc3;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar::placeholder {
+    color: #9cafc3;
+  }
+  body main .search-section .searcher .search-bar-style .icon-search {
+    left: 1.25rem;
+  }
+  body main .search-section .content-search-section {
+    margin-top: 4.56rem;
+  }
+  body main .search-section .content-search-section h2 {
+    font-size: 1.13rem;
+    margin-bottom: 0.44rem;
+  }
+  body main .search-section .content-search-section p {
+    font-size: 1rem;
+    margin: 0 0 0 0;
+  }
+  body main .trending-section .trending-section-content {
+    padding-top: 4.19rem;
+  }
+  body main .trending-section .trending-section-content h2 {
+    font-size: 1.56rem;
+    margin-bottom: 0.75rem;
+  }
+  body main .trending-section .trending-section-content p {
+    font-size: 1.13rem;
+    line-height: 1.31rem;
+    margin: 0 0 3.31rem 0;
+  }
+  body main .trending-section .trending-img {
+    padding-bottom: 11.38rem;
+    text-align: center;
+  }
+  body main .trending-section .trending-img img {
+    height: 17.19rem;
+    width: 22.31rem;
+  }
+  body footer {
+    text-align: unset;
+  }
+  body footer .footer-elements .footer-title {
+    margin: 3.09rem 0 3.22rem 9.75rem;
+    font-size: 0.81rem;
+    line-height: 0.94rem;
+  }
+  body footer .footer-elements .social-media {
+    position: absolute;
+    top: 84.7rem;
+    left: 15.75rem;
+    margin: 2.96rem 0 3.02rem 1.06rem;
+  }
+  body footer .footer-elements .copyright {
+    position: absolute;
+    top: 87.8rem;
+    right: 9.88rem;
+    margin-bottom: 0;
+    font-size: 0.81rem;
+    line-height: 0.94rem;
+  }
+  body footer .blue-bar-bot {
+    height: 0.32rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1219px) {
+  /* Tablet header */
+  body {
+    /* Tablet Footer */
+  }
+  body header nav {
+    height: 5.63rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  body header nav .logo svg {
+    height: 3.69rem;
+    width: 3.69rem;
+    margin: 1.13rem 0 0.81rem 3rem;
+  }
+  body header nav .hamMenu .burguer-icon span {
+    display: none;
+  }
+  body header nav .hamMenu ul {
+    position: unset;
+    top: 0;
+    background-color: unset;
+    height: unset;
+    overflow: unset;
+    width: unset;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 8.13rem 5.06rem 4.44rem 3.38rem;
+        grid-template-columns: 8.13rem 5.06rem 4.44rem 3.38rem;
+    -webkit-column-gap: 2.59rem;
+            column-gap: 2.59rem;
+    margin: 1.13rem 3rem 1.13rem 0;
+  }
+  body header nav .hamMenu ul li:nth-child(2n) {
+    display: none;
+  }
+  body header nav .hamMenu ul li {
+    color: #572ee5;
+    font-size: 0.81rem;
+    line-height: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  body header nav .hamMenu ul li a {
+    color: #572ee5;
+  }
+  body header nav .hamMenu ul li:nth-child(2n + 3) {
+    margin: 0;
+  }
+  body header nav .hamMenu ul li:nth-last-child(1) {
+    display: block;
+  }
+  body main {
+    /* Tablet Search Section */
+    /* Tablet Trending Section */
+  }
+  body main .search-section {
+    margin: 4.75rem 0 5.94rem 0;
+  }
+  body main .search-section .title-search-section {
+    margin: 0 0 1.5rem 0;
+  }
+  body main .search-section .title-search-section h1 {
+    font-size: 2.19rem;
+    line-height: 3.13rem;
+  }
+  body main .search-section .searcher {
+    margin: 0 0 0 0;
+  }
+  body main .search-section .searcher img {
+    height: 11.88rem;
+    width: 24.94rem;
+  }
+  body main .search-section .searcher .search-bar-style {
+    width: 34.44rem;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar {
+    width: 27rem;
+    margin-left: 3.38rem;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar::-webkit-input-placeholder {
+    color: #9cafc3;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar:-ms-input-placeholder {
+    color: #9cafc3;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar::-ms-input-placeholder {
+    color: #9cafc3;
+  }
+  body main .search-section .searcher .search-bar-style .search-bar::placeholder {
+    color: #9cafc3;
+  }
+  body main .search-section .searcher .search-bar-style .icon-search {
+    left: 1.25rem;
+  }
+  body main .search-section .content-search-section {
+    margin-top: 4.56rem;
+  }
+  body main .search-section .content-search-section h2 {
+    font-size: 1.13rem;
+    margin-bottom: 0.44rem;
+  }
+  body main .search-section .content-search-section p {
+    font-size: 1rem;
+    margin: 0 0 0 0;
+  }
+  body main .trending-section .trending-section-content {
+    padding-top: 4.19rem;
+  }
+  body main .trending-section .trending-section-content h2 {
+    font-size: 1.56rem;
+    margin-bottom: 0.75rem;
+  }
+  body main .trending-section .trending-section-content p {
+    font-size: 1.13rem;
+    line-height: 1.31rem;
+    margin: 0 0 3.31rem 0;
+  }
+  body main .trending-section .trending-img {
+    padding-bottom: 11.38rem;
+    text-align: center;
+  }
+  body main .trending-section .trending-img img {
+    height: 17.19rem;
+    width: 22.31rem;
+  }
+  body footer {
+    text-align: unset;
+  }
+  body footer .footer-elements {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 9.5rem 7.9rem 1fr;
+        grid-template-columns: 9.5rem 7.9rem 1fr;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  body footer .footer-elements .footer-title {
+    margin: 3.09rem 0 3.22rem 3rem;
+    font-size: 0.81rem;
+    line-height: 0.94rem;
+  }
+  body footer .footer-elements .social-media {
+    margin: 2.96rem 0 3.02rem 1.06rem;
+  }
+  body footer .footer-elements .copyright {
+    margin-bottom: 0;
+    font-size: 0.81rem;
+    line-height: 0.94rem;
+    margin-right: 3rem;
+    -ms-grid-column-align: right;
+        justify-self: right;
+  }
+  body footer .blue-bar-bot {
+    height: 0.32rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */

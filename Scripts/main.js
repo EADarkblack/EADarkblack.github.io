@@ -1,1 +1,1 @@
-alert("Hola");
+$(".burguer-menu").svgInject();

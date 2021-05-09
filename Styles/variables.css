@@ -1,2 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap");
+.theme {
+  --backgroundColor: #ffffff;
+  --sectionBackgroundColor: #f3f5f8;
+  --mainColor: #572ee5;
+  --barColor: #572ee5;
+  --hamMenuColor: #572ee5e6;
+  --inputText: #000000;
+}
+
+.theme--dark {
+  --backgroundColor: #37383c;
+  --sectionBackgroundColor: #222326;
+  --mainColor: #ffffff;
+  --barColor: #000000;
+  --hamMenuColor: #000000e6;
+  --inputText: #ffffff;
+}
 /*# sourceMappingURL=variables.css.map */

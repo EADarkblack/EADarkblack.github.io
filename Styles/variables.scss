@@ -7,6 +7,43 @@ $robotoFont: 'Roboto', sans-serif;
 
 // Font colors && Background colors
 
+// Normal Colors
+
 $mainColor: #572ee5;
+$hamMenuBgColor: #572ee5e6;
 $secondColor: #6b7989;
 $sectionBackgroundColor: #f3f5f8;
+$thirdColor: #9cafc3;
+$backgroundColor: #ffffff;
+$barColor: #572ee5;
+$inputText: #000000;
+
+// Dark Mode Colors
+
+$barColorDM: #000000;
+$backgroundColorDM: #37383c;
+$mainColorDM: #ffffff;
+$sectionBackgroundColorDM: #222326;
+$hamMenuBgColorDM: #000000e6;
+$inputTextDM: #ffffff;
+
+
+// Bright Theme and Dark Theme
+
+.theme{
+    --backgroundColor: #{$backgroundColor};
+    --sectionBackgroundColor: #{$sectionBackgroundColor};
+    --mainColor: #{$mainColor};
+    --barColor: #{$barColor};
+    --hamMenuColor: #{$hamMenuBgColor};
+    --inputText: #{$inputText};
+
+    &--dark{
+        --backgroundColor: #{$backgroundColorDM};
+        --sectionBackgroundColor: #{$sectionBackgroundColorDM};
+        --mainColor: #{$mainColorDM};
+        --barColor: #{$barColorDM};
+        --hamMenuColor: #{$hamMenuBgColorDM};
+        --inputText: #{$inputTextDM};
+    }
+}
