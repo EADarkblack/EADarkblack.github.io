@@ -1,0 +1,664 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap");
+.theme {
+  --backgroundColor: #ffffff;
+  --sectionBackgroundColor: #f3f5f8;
+  --mainColor: #572ee5;
+  --barColor: #572ee5;
+  --hamMenuColor: #572ee5e6;
+  --inputText: #000000;
+  --textSectionColor: #50e3c2;
+}
+
+.theme--dark {
+  --backgroundColor: #37383c;
+  --sectionBackgroundColor: #222326;
+  --mainColor: #ffffff;
+  --barColor: #000000;
+  --hamMenuColor: #000000e6;
+  --inputText: #ffffff;
+  --textSectionColor: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Header y nav menu */
+body {
+  background-color: var(--backgroundColor);
+}
+
+body header .blue-bar-top {
+  background-color: var(--barColor);
+  width: 100%;
+  height: 0.31rem;
+}
+
+body header nav {
+  height: 5.938rem;
+}
+
+body header nav .logo .logo-svg {
+  height: 3.05rem;
+  width: 3.05rem;
+  margin: 1.81rem 0 1.08rem 1.38rem;
+}
+
+body header nav .logo .logo-svg #GIFOS {
+  fill: var(--mainColor);
+}
+
+body header nav .hamMenu {
+  /* para mostrar menu cambiar el display a flex. */
+}
+
+body header nav .hamMenu .burguer-icon {
+  position: absolute;
+  top: 3.25rem;
+  right: 1.63rem;
+}
+
+body header nav .hamMenu .burguer-icon span {
+  display: block;
+  width: 0.94rem;
+  height: 0.125rem;
+  margin-bottom: 0.3rem;
+  background-color: var(--mainColor);
+}
+
+body header nav .hamMenu ul {
+  position: absolute;
+  top: 6.25rem;
+  list-style: none;
+  background-color: var(--hamMenuColor);
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body header nav .hamMenu ul li:nth-child(2n) {
+  height: 0.01rem;
+  width: 2.56rem;
+  background-color: #ffffff;
+  margin: 0;
+}
+
+body header nav .hamMenu ul li {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.88rem;
+  margin: 2rem 0 0.69rem 0;
+}
+
+body header nav .hamMenu ul li:hover {
+  border-bottom: 2px solid #50e3c2;
+  cursor: pointer;
+}
+
+body header nav .hamMenu ul li:nth-child(2n + 3) {
+  margin: 0.87rem 0 0.69rem 0;
+}
+
+body header nav .hamMenu ul .new-gifos-button {
+  display: none;
+  height: 3.38rem;
+  width: 3.38rem;
+  border-radius: 100%;
+  border: 1px solid #9cafc3;
+  background-color: #9cafc3;
+}
+
+body header nav .hamMenu ul .new-gifos-button span {
+  font-size: 2rem;
+  font-weight: lighter;
+  position: relative;
+  top: 35%;
+  left: 33%;
+  color: #ffffff;
+}
+
+body header nav .hamMenu ul .new-gifos-button:hover {
+  border-bottom: 2px solid #9cafc3;
+}
+
+body main {
+  /* Creator Section */
+}
+
+body main .creator-section {
+  margin: 4rem 2rem 8.9rem 2rem;
+}
+
+body main .creator-section .creator-elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .creator-section .creator-elements .camera-area {
+  border: 1px solid var(--mainColor);
+  height: 30rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .creator-section .creator-elements .camera-area .cut-corner {
+  display: none;
+  height: 1.56rem;
+  width: 1.69rem;
+  border-top: 1px solid var(--textSectionColor);
+  border-left: 1px solid var(--textSectionColor);
+  margin: 1.25rem 0 0 1.25rem;
+  z-index: 1;
+}
+
+body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(2) {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  position: relative;
+  left: 38.7rem;
+  bottom: 2.9rem;
+}
+
+body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(3) {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  position: relative;
+  top: 14.5rem;
+}
+
+body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(4) {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+  position: relative;
+  top: 11.65rem;
+  left: 38.7rem;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area {
+  margin: 0 2rem 0 2rem;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area h1 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--mainColor);
+  font-size: 1.58rem;
+  letter-spacing: 0;
+  line-height: 2.19rem;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area h1 span {
+  color: var(--textSectionColor);
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area h2 {
+  font-family: "Roboto", sans-serif;
+  color: var(--inputText);
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.81rem;
+}
+
+body main .creator-section .creator-elements .steps-elements {
+  margin-top: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .creator-section .creator-elements .steps-elements .steps-numbers {
+  margin-bottom: 1.19rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2rem 2rem 2rem;
+      grid-template-columns: 2rem 2rem 2rem;
+  -webkit-column-gap: 1.63rem;
+          column-gap: 1.63rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .creator-section .creator-elements .steps-elements .steps-numbers .step {
+  height: 2rem;
+  width: 2rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--mainColor);
+  font-size: 1.13rem;
+  letter-spacing: 0;
+  line-height: 1.31rem;
+  border-radius: 100%;
+  border: 1px solid var(--mainColor);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .creator-section .creator-elements .steps-elements .creator-bar {
+  display: none;
+  height: 0.43rem;
+  width: 49.74rem;
+  background-color: var(--mainColor);
+  border-radius: 1rem;
+}
+
+body main .creator-section .creator-elements .steps-elements .start-button {
+  margin-top: 1.26rem;
+}
+
+body main .creator-section .creator-elements .steps-elements .start-button button {
+  height: 3.13rem;
+  width: 7.94rem;
+  border: 1px solid var(--mainColor);
+  border-radius: 1.688rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: var(--mainColor);
+  font-size: 0.81rem;
+  letter-spacing: 0;
+  line-height: 1rem;
+  background-color: var(--backgroundColor);
+  outline: none;
+}
+
+body main .creator-section .creator-elements .steps-elements .start-button button:hover {
+  background-color: var(--mainColor);
+  color: var(--backgroundColor);
+}
+
+body main .creator-section .img {
+  display: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  top: 17rem;
+  width: 100%;
+  height: 22.2rem;
+}
+
+body main .creator-section .img .camera-img {
+  margin-left: 4rem;
+}
+
+body main .creator-section .img .camera-img .light {
+  position: relative;
+  bottom: 1rem;
+  right: 0.1rem;
+  opacity: 30%;
+}
+
+body main .creator-section .img .reel {
+  margin-right: 4rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+body footer {
+  text-align: center;
+}
+
+body footer .footer-elements .footer-title {
+  margin: 2.94rem 0 1.5rem 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.13rem;
+  color: var(--inputText);
+}
+
+body footer .footer-elements .social-media {
+  margin: 0 0 2.99rem 0;
+}
+
+body footer .footer-elements .social-media i {
+  margin-right: 1.19rem;
+  font-size: 1.26rem;
+  color: #cdd6e0;
+}
+
+body footer .footer-elements .social-media i:hover {
+  color: var(--mainColor);
+}
+
+body footer .footer-elements .copyright {
+  margin-bottom: 1.44rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0;
+  line-height: 1.25rem;
+  color: var(--inputText);
+}
+
+body footer .blue-bar-bot {
+  background-color: var(--barColor);
+  width: 100%;
+  height: 0.31rem;
+}
+
+@media screen and (min-width: 1220px) {
+  /* Desktop header */
+  body {
+    /* Desktop Footer */
+  }
+  body header nav {
+    height: 5.63rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  body header nav .logo svg {
+    height: 3.69rem;
+    width: 3.69rem;
+    margin: 1.13rem 0 0.81rem 9.75rem;
+  }
+  body header nav .hamMenu .burguer-icon span {
+    display: none;
+  }
+  body header nav .hamMenu ul {
+    position: unset;
+    top: 0;
+    background-color: unset;
+    height: unset;
+    overflow: unset;
+    width: unset;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 8.13rem 5.06rem 4.44rem 3.38rem;
+        grid-template-columns: 8.13rem 5.06rem 4.44rem 3.38rem;
+    -webkit-column-gap: 2.59rem;
+            column-gap: 2.59rem;
+    margin: 1.13rem 9.75rem 1.13rem 0;
+  }
+  body header nav .hamMenu ul li:nth-child(2n) {
+    display: none;
+  }
+  body header nav .hamMenu ul li {
+    color: var(--mainColor);
+    font-size: 0.81rem;
+    line-height: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  body header nav .hamMenu ul li:nth-child(2n + 3) {
+    margin: 0;
+  }
+  body header nav .hamMenu ul li:nth-last-child(1) {
+    display: block;
+  }
+  body main {
+    /* Desktop Creator Section */
+  }
+  body main .creator-section {
+    margin: 4rem 0 9.55rem 0;
+  }
+  body main .creator-section .creator-elements .camera-area {
+    height: 24.38rem;
+    width: 43rem;
+  }
+  body main .creator-section .creator-elements .camera-area .cut-corner {
+    display: inline-block;
+    position: relative;
+    bottom: 3.6rem;
+  }
+  body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(2) {
+    position: relative;
+    left: 38.8rem;
+    bottom: 6.5rem;
+  }
+  body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(3) {
+    position: relative;
+    top: 10.9rem;
+  }
+  body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(4) {
+    position: relative;
+    top: 8.05rem;
+    left: 38.8rem;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area {
+    position: relative;
+    bottom: 6rem;
+    margin: 0;
+  }
+  body main .creator-section .creator-elements .steps-elements .creator-bar {
+    display: block;
+  }
+  body main .creator-section .img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body footer {
+    text-align: unset;
+  }
+  body footer .footer-elements {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  body footer .footer-elements .social-media-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body footer .footer-elements .social-media-content .footer-title {
+    margin: 3.09rem 0 3.22rem 9.75rem;
+    font-size: 0.81rem;
+    line-height: 0.94rem;
+  }
+  body footer .footer-elements .social-media-content .social-media {
+    margin: 2.96rem 0 3.02rem 1.06rem;
+  }
+  body footer .footer-elements .copyright {
+    font-size: 0.81rem;
+    line-height: 0.94rem;
+    margin-right: 9.88rem;
+  }
+  body footer .blue-bar-bot {
+    height: 0.32rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1219px) {
+  /* Tablet header */
+  body {
+    /* Tablet Footer */
+  }
+  body header nav {
+    height: 5.63rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  body header nav .logo svg {
+    height: 3.69rem;
+    width: 3.69rem;
+    margin: 1.13rem 0 0.81rem 3rem;
+  }
+  body header nav .hamMenu .burguer-icon span {
+    display: none;
+  }
+  body header nav .hamMenu ul {
+    position: unset;
+    top: 0;
+    background-color: unset;
+    height: unset;
+    overflow: unset;
+    width: unset;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 8.13rem 5.06rem 4.44rem 3.38rem;
+        grid-template-columns: 8.13rem 5.06rem 4.44rem 3.38rem;
+    -webkit-column-gap: 2.59rem;
+            column-gap: 2.59rem;
+    margin: 1.13rem 3rem 1.13rem 0;
+  }
+  body header nav .hamMenu ul li:nth-child(2n) {
+    display: none;
+  }
+  body header nav .hamMenu ul li {
+    color: var(--mainColor);
+    font-size: 0.81rem;
+    line-height: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  body header nav .hamMenu ul li a {
+    color: #572ee5;
+  }
+  body header nav .hamMenu ul li:nth-child(2n + 3) {
+    margin: 0;
+  }
+  body header nav .hamMenu ul li:nth-last-child(1) {
+    display: block;
+  }
+  body main {
+    /* Tablet Creator Section */
+  }
+  body main .creator-section {
+    margin: 4rem 0 8.9rem 0;
+  }
+  body main .creator-section .creator-elements .camera-area {
+    height: 24.38rem;
+    width: 43rem;
+  }
+  body main .creator-section .creator-elements .camera-area .cut-corner {
+    display: inline-block;
+    position: relative;
+    bottom: 3.6rem;
+  }
+  body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(2) {
+    position: relative;
+    left: 38.8rem;
+    bottom: 6.5rem;
+  }
+  body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(3) {
+    position: relative;
+    top: 10.9rem;
+  }
+  body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(4) {
+    position: relative;
+    top: 8.05rem;
+    left: 38.8rem;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area {
+    position: relative;
+    bottom: 6rem;
+    margin: 0;
+  }
+  body main .creator-section .creator-elements .steps-elements .creator-bar {
+    display: block;
+    width: 45rem;
+  }
+  body main .creator-section .img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    z-index: -1;
+    opacity: 0.5;
+  }
+  body main .creator-section .img .reel {
+    position: relative;
+    bottom: 6.5rem;
+  }
+  body footer {
+    text-align: unset;
+  }
+  body footer .footer-elements {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  body footer .footer-elements .social-media-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body footer .footer-elements .social-media-content .footer-title {
+    margin: 3.09rem 0 3.22rem 3rem;
+    font-size: 0.81rem;
+    line-height: 0.94rem;
+  }
+  body footer .footer-elements .social-media-content .social-media {
+    margin: 2.96rem 0 3.02rem 1.06rem;
+  }
+  body footer .footer-elements .copyright {
+    margin-bottom: 0;
+    font-size: 0.81rem;
+    line-height: 0.94rem;
+    margin-right: 3rem;
+  }
+  body footer .blue-bar-bot {
+    height: 0.32rem;
+  }
+}
+/*# sourceMappingURL=creator.css.map */

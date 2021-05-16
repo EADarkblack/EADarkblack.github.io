@@ -6,6 +6,7 @@
   --barColor: #572ee5;
   --hamMenuColor: #572ee5e6;
   --inputText: #000000;
+  --textSectionColor: #50e3c2;
 }
 
 .theme--dark {
@@ -15,6 +16,7 @@
   --barColor: #000000;
   --hamMenuColor: #000000e6;
   --inputText: #ffffff;
+  --textSectionColor: #ffffff;
 }
 
 * {
@@ -38,13 +40,13 @@ body header nav {
   height: 5.938rem;
 }
 
-body header nav .logo svg {
+body header nav .logo .logo-svg {
   height: 3.05rem;
   width: 3.05rem;
   margin: 1.81rem 0 1.08rem 1.38rem;
 }
 
-body header nav .logo svg #GIFOS {
+body header nav .logo .logo-svg #GIFOS {
   fill: var(--mainColor);
 }
 
@@ -64,17 +66,37 @@ body header nav .hamMenu .burguer-icon span {
   height: 0.125rem;
   margin-bottom: 0.3rem;
   background-color: var(--mainColor);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;
 }
 
-body header nav .hamMenu ul {
+body header nav .hamMenu .burguer-open-icon span:nth-child(1) {
+  -webkit-transform: translateY(7px) rotate(45deg);
+          transform: translateY(7px) rotate(45deg);
+}
+
+body header nav .hamMenu .burguer-open-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+body header nav .hamMenu .burguer-open-icon span:nth-child(3) {
+  -webkit-transform: translateY(-7px) rotate(-45deg);
+          transform: translateY(-7px) rotate(-45deg);
+}
+
+body header nav .hamMenu .menu {
   position: absolute;
   top: 6.25rem;
   list-style: none;
   background-color: var(--hamMenuColor);
-  height: 100%;
+  height: 0;
   overflow: hidden;
   width: 100%;
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -82,16 +104,19 @@ body header nav .hamMenu ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 1;
+  -webkit-transition: height 0.5s ease-out;
+  transition: height 0.5s ease-out;
 }
 
-body header nav .hamMenu ul li:nth-child(2n) {
+body header nav .hamMenu .menu li:nth-child(2n) {
   height: 0.01rem;
   width: 2.56rem;
   background-color: #ffffff;
   margin: 0;
 }
 
-body header nav .hamMenu ul li {
+body header nav .hamMenu .menu li {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #ffffff;
@@ -101,27 +126,61 @@ body header nav .hamMenu ul li {
   margin: 2rem 0 0.69rem 0;
 }
 
-body header nav .hamMenu ul li a {
-  text-decoration: none;
-  color: #ffffff;
+body header nav .hamMenu .menu li:hover {
+  border-bottom: 2px solid #50e3c2;
+  cursor: pointer;
 }
 
-body header nav .hamMenu ul li:nth-child(2n + 3) {
+body header nav .hamMenu .menu li:nth-child(2n + 3) {
   margin: 0.87rem 0 0.69rem 0;
 }
 
-body header nav .hamMenu ul li:nth-last-child(1) {
+body header nav .hamMenu .menu a {
+  text-decoration: none;
+}
+
+body header nav .hamMenu .menu a .new-gifos-button {
   display: none;
+  height: 3.38rem;
+  width: 3.38rem;
+  border-radius: 100%;
+  border: 1px solid var(--mainColor);
+}
+
+body header nav .hamMenu .menu a .new-gifos-button span {
+  font-size: 2rem;
+  font-weight: lighter;
+  position: relative;
+  top: 35%;
+  left: 33%;
+  color: var(--mainColor);
+}
+
+body header nav .hamMenu .menu a .new-gifos-button:hover {
+  background-color: var(--mainColor);
+  border-bottom: 2px solid var(--mainColor);
+}
+
+body header nav .hamMenu .menu a .new-gifos-button:hover span {
+  color: var(--backgroundColor);
+}
+
+body header nav .hamMenu .display-menu {
+  height: 100%;
+  -webkit-transition: height 0.5s ease-in;
+  transition: height 0.5s ease-in;
 }
 
 body main {
   /* Search Section */
   /* New Search Section */
+  /* Fav section */
+  /* Mis Gifos Section */
   /* Trending Section */
 }
 
 body main .search-section {
-  margin: 0.44rem 0 0 0;
+  margin: 0.44rem 0 2.81rem 0;
 }
 
 body main .search-section .title-search-section {
@@ -178,6 +237,7 @@ body main .search-section .searcher .search-bar-style .search-bar {
   font-size: 1rem;
   letter-spacing: 0;
   line-height: 1.19rem;
+  outline: none;
 }
 
 body main .search-section .searcher .search-bar-style .search-bar::-webkit-input-placeholder {
@@ -212,10 +272,12 @@ body main .search-section .searcher .search-bar-style .search-bar::placeholder {
   color: #6b7989;
 }
 
-body main .search-section .searcher .search-bar-style .icon-search {
+body main .search-section .searcher .search-bar-style .fa-search {
   position: relative;
   top: 0.2rem;
   right: 0.3rem;
+  font-size: 1.25rem;
+  color: var(--mainColor);
 }
 
 body main .search-section .content-search-section {
@@ -243,17 +305,112 @@ body main .search-section .content-search-section p {
   margin: 0 4.69rem 0 4.69rem;
 }
 
+body main .search-section .content-search-section p span {
+  cursor: pointer;
+}
+
 body main .new-search-section {
-  margin: 2.19rem 0 4.94rem 0;
+  margin-bottom: 4.94rem;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 body main .new-search-section .bar-section {
   height: 0.06rem;
   width: 9.81rem;
+  background-color: var(--mainColor);
+  margin-bottom: 2.69rem;
+}
+
+body main .new-search-section .no-content-search-section {
+  text-align: center;
+}
+
+body main .new-search-section .no-content-search-section h1 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--mainColor);
+  font-size: 1.56rem;
+  letter-spacing: 0;
+  line-height: 2.5rem;
+}
+
+body main .new-search-section .no-content-search-section img {
+  margin: 6.81rem 0 1.81rem 0;
+}
+
+body main .new-search-section .no-content-search-section h2 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--textSectionColor);
+  font-size: 1.38rem;
+  letter-spacing: 0;
+  line-height: 1.58rem;
+  margin: 0 2rem 0 2rem;
+}
+
+body main .fav-section {
+  display: none;
+  margin: 0.31rem 0 4.88rem 0;
+  text-align: center;
+}
+
+body main .fav-section .title-fav-section h1 {
+  margin-top: 0.44rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--mainColor);
+  font-size: 1.25rem;
+  letter-spacing: 0;
+  line-height: 1.88rem;
+}
+
+body main .fav-section .no-content-fav-section img {
+  margin: 6.83rem 0 1.48rem 0;
+}
+
+body main .fav-section .no-content-fav-section h2 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--textSectionColor);
+  font-size: 1.38rem;
+  letter-spacing: 0;
+  line-height: 1.56rem;
+  margin: 0 2rem 0 2rem;
+}
+
+body main .misgifos-section {
+  display: none;
+  margin: 0.31rem 0 4.75rem 0;
+  text-align: center;
+}
+
+body main .misgifos-section .title-misgifos-section h1 {
+  margin-top: 0.38rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--mainColor);
+  font-size: 1.25rem;
+  letter-spacing: 0;
+  line-height: 1.88rem;
+}
+
+body main .misgifos-section .no-content-misgifos-section img {
+  margin: 6.94rem 0 2.5rem 0;
+}
+
+body main .misgifos-section .no-content-misgifos-section h2 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--textSectionColor);
+  font-size: 1.38rem;
+  letter-spacing: 0;
+  line-height: 1.56rem;
+  margin: 0 2rem 0 2rem;
 }
 
 body main .trending-section {
-  background-color: #f3f5f8;
+  background-color: var(--sectionBackgroundColor);
 }
 
 body main .trending-section .trending-section-content {
@@ -264,7 +421,7 @@ body main .trending-section .trending-section-content {
 body main .trending-section .trending-section-content h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
-  color: #572ee5;
+  color: var(--mainColor);
   font-size: 1.25rem;
   letter-spacing: 0;
   line-height: 1.88rem;
@@ -277,6 +434,7 @@ body main .trending-section .trending-section-content p {
   letter-spacing: 0;
   line-height: 1.44rem;
   margin: 0 1.31rem 2rem 1.31rem;
+  color: var(--inputText);
 }
 
 body main .trending-section .trending-img {
@@ -298,14 +456,21 @@ body footer .footer-elements .footer-title {
   font-size: 0.94rem;
   letter-spacing: 0;
   line-height: 1.13rem;
+  color: var(--inputText);
 }
 
 body footer .footer-elements .social-media {
   margin: 0 0 2.99rem 0;
 }
 
-body footer .footer-elements .social-media img {
+body footer .footer-elements .social-media i {
   margin-right: 1.19rem;
+  font-size: 1.26rem;
+  color: #cdd6e0;
+}
+
+body footer .footer-elements .social-media i:hover {
+  color: var(--mainColor);
 }
 
 body footer .footer-elements .copyright {
@@ -314,10 +479,11 @@ body footer .footer-elements .copyright {
   font-size: 0.88rem;
   letter-spacing: 0;
   line-height: 1.25rem;
+  color: var(--inputText);
 }
 
 body footer .blue-bar-bot {
-  background-color: #572ee5;
+  background-color: var(--barColor);
   width: 100%;
   height: 0.31rem;
 }
@@ -326,6 +492,12 @@ body footer .blue-bar-bot {
   /* Desktop header */
   body {
     /* Desktop Footer */
+  }
+  body header {
+    position: fixed;
+    top: 0rem;
+    width: 100%;
+    background-color: var(--backgroundColor);
   }
   body header nav {
     height: 5.63rem;
@@ -344,7 +516,7 @@ body footer .blue-bar-bot {
   body header nav .hamMenu .burguer-icon span {
     display: none;
   }
-  body header nav .hamMenu ul {
+  body header nav .hamMenu .menu {
     position: unset;
     top: 0;
     background-color: unset;
@@ -359,31 +531,31 @@ body footer .blue-bar-bot {
             column-gap: 2.59rem;
     margin: 1.13rem 9.75rem 1.13rem 0;
   }
-  body header nav .hamMenu ul li:nth-child(2n) {
+  body header nav .hamMenu .menu li:nth-child(2n) {
     display: none;
   }
-  body header nav .hamMenu ul li {
-    color: #572ee5;
+  body header nav .hamMenu .menu li {
+    color: var(--mainColor);
     font-size: 0.81rem;
     line-height: 1rem;
     margin: 0;
     text-transform: uppercase;
   }
-  body header nav .hamMenu ul li a {
-    color: #572ee5;
-  }
-  body header nav .hamMenu ul li:nth-child(2n + 3) {
+  body header nav .hamMenu .menu li:nth-child(2n + 3) {
     margin: 0;
   }
-  body header nav .hamMenu ul li:nth-last-child(1) {
+  body header nav .hamMenu .menu li:nth-last-child(1) {
     display: block;
   }
   body main {
     /* Desktop Search Section */
+    /* Desktop New Search Section */
+    /* Fav section */
+    /* Mis Gifos Section */
     /* Desktop Trending Section */
   }
   body main .search-section {
-    margin: 4.75rem 0 5.94rem 0;
+    margin: 10.69rem 0 5.94rem 0;
   }
   body main .search-section .title-search-section {
     margin: 0 0 1.5rem 0;
@@ -418,7 +590,7 @@ body footer .blue-bar-bot {
   body main .search-section .searcher .search-bar-style .search-bar::placeholder {
     color: #9cafc3;
   }
-  body main .search-section .searcher .search-bar-style .icon-search {
+  body main .search-section .searcher .search-bar-style .fa-search {
     left: 1.25rem;
   }
   body main .search-section .content-search-section {
@@ -431,6 +603,64 @@ body footer .blue-bar-bot {
   body main .search-section .content-search-section p {
     font-size: 1rem;
     margin: 0 0 0 0;
+  }
+  body main .new-search-section {
+    margin-bottom: 4.94rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  body main .new-search-section .bar-section {
+    height: 0.06rem;
+    width: 9.81rem;
+    background-color: var(--mainColor);
+    margin-bottom: 2.69rem;
+  }
+  body main .fav-section {
+    margin: 0.31rem 0 4.88rem 0;
+    text-align: center;
+  }
+  body main .fav-section .title-fav-section h1 {
+    margin-top: 0.44rem;
+    font-family: "Montserrat", sans-serif;
+    color: var(--mainColor);
+    font-size: 1.25rem;
+    letter-spacing: 0;
+    line-height: 1.88rem;
+  }
+  body main .fav-section .no-content-fav-section img {
+    margin: 6.83rem 0 1.48rem 0;
+  }
+  body main .fav-section .no-content-fav-section h2 {
+    font-family: "Montserrat", sans-serif;
+    color: var(--textSectionColor);
+    font-size: 1.38rem;
+    letter-spacing: 0;
+    line-height: 1.56rem;
+    margin: 0 2rem 0 2rem;
+  }
+  body main .misgifos-section {
+    margin: 0.31rem 0 4.75rem 0;
+    text-align: center;
+  }
+  body main .misgifos-section .title-misgifos-section h1 {
+    margin-top: 0.38rem;
+    font-family: "Montserrat", sans-serif;
+    color: var(--mainColor);
+    font-size: 1.25rem;
+    letter-spacing: 0;
+    line-height: 1.88rem;
+  }
+  body main .misgifos-section .no-content-misgifos-section img {
+    margin: 6.94rem 0 2.5rem 0;
+  }
+  body main .misgifos-section .no-content-misgifos-section h2 {
+    font-family: "Montserrat", sans-serif;
+    color: var(--textSectionColor);
+    font-size: 1.38rem;
+    letter-spacing: 0;
+    line-height: 1.56rem;
+    margin: 0 2rem 0 2rem;
   }
   body main .trending-section .trending-section-content {
     padding-top: 4.19rem;
@@ -455,24 +685,38 @@ body footer .blue-bar-bot {
   body footer {
     text-align: unset;
   }
-  body footer .footer-elements .footer-title {
+  body footer .footer-elements {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  body footer .footer-elements .social-media-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body footer .footer-elements .social-media-content .footer-title {
     margin: 3.09rem 0 3.22rem 9.75rem;
     font-size: 0.81rem;
     line-height: 0.94rem;
   }
-  body footer .footer-elements .social-media {
-    position: absolute;
-    top: 84.7rem;
-    left: 15.75rem;
+  body footer .footer-elements .social-media-content .social-media {
     margin: 2.96rem 0 3.02rem 1.06rem;
   }
   body footer .footer-elements .copyright {
-    position: absolute;
-    top: 87.8rem;
-    right: 9.88rem;
-    margin-bottom: 0;
     font-size: 0.81rem;
     line-height: 0.94rem;
+    margin-right: 9.88rem;
   }
   body footer .blue-bar-bot {
     height: 0.32rem;
@@ -501,7 +745,7 @@ body footer .blue-bar-bot {
   body header nav .hamMenu .burguer-icon span {
     display: none;
   }
-  body header nav .hamMenu ul {
+  body header nav .hamMenu .menu {
     position: unset;
     top: 0;
     background-color: unset;
@@ -516,23 +760,23 @@ body footer .blue-bar-bot {
             column-gap: 2.59rem;
     margin: 1.13rem 3rem 1.13rem 0;
   }
-  body header nav .hamMenu ul li:nth-child(2n) {
+  body header nav .hamMenu .menu li:nth-child(2n) {
     display: none;
   }
-  body header nav .hamMenu ul li {
-    color: #572ee5;
+  body header nav .hamMenu .menu li {
+    color: var(--mainColor);
     font-size: 0.81rem;
     line-height: 1rem;
     margin: 0;
     text-transform: uppercase;
   }
-  body header nav .hamMenu ul li a {
+  body header nav .hamMenu .menu li a {
     color: #572ee5;
   }
-  body header nav .hamMenu ul li:nth-child(2n + 3) {
+  body header nav .hamMenu .menu li:nth-child(2n + 3) {
     margin: 0;
   }
-  body header nav .hamMenu ul li:nth-last-child(1) {
+  body header nav .hamMenu .menu li:nth-last-child(1) {
     display: block;
   }
   body main {
@@ -575,7 +819,7 @@ body footer .blue-bar-bot {
   body main .search-section .searcher .search-bar-style .search-bar::placeholder {
     color: #9cafc3;
   }
-  body main .search-section .searcher .search-bar-style .icon-search {
+  body main .search-section .searcher .search-bar-style .fa-search {
     left: 1.25rem;
   }
   body main .search-section .content-search-section {
@@ -613,20 +857,27 @@ body footer .blue-bar-bot {
     text-align: unset;
   }
   body footer .footer-elements {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 9.5rem 7.9rem 1fr;
-        grid-template-columns: 9.5rem 7.9rem 1fr;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
   }
-  body footer .footer-elements .footer-title {
+  body footer .footer-elements .social-media-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body footer .footer-elements .social-media-content .footer-title {
     margin: 3.09rem 0 3.22rem 3rem;
     font-size: 0.81rem;
     line-height: 0.94rem;
   }
-  body footer .footer-elements .social-media {
+  body footer .footer-elements .social-media-content .social-media {
     margin: 2.96rem 0 3.02rem 1.06rem;
   }
   body footer .footer-elements .copyright {
@@ -634,8 +885,6 @@ body footer .blue-bar-bot {
     font-size: 0.81rem;
     line-height: 0.94rem;
     margin-right: 3rem;
-    -ms-grid-column-align: right;
-        justify-self: right;
   }
   body footer .blue-bar-bot {
     height: 0.32rem;

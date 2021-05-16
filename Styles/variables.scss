@@ -17,6 +17,7 @@ $thirdColor: #9cafc3;
 $backgroundColor: #ffffff;
 $barColor: #572ee5;
 $inputText: #000000;
+$textSectionColor: #50e3c2;
 
 // Dark Mode Colors
 
@@ -26,6 +27,7 @@ $mainColorDM: #ffffff;
 $sectionBackgroundColorDM: #222326;
 $hamMenuBgColorDM: #000000e6;
 $inputTextDM: #ffffff;
+$textSectionColorDM: #ffffff;
 
 
 // Bright Theme and Dark Theme
@@ -37,6 +39,7 @@ $inputTextDM: #ffffff;
     --barColor: #{$barColor};
     --hamMenuColor: #{$hamMenuBgColor};
     --inputText: #{$inputText};
+    --textSectionColor: #{$textSectionColor};
 
     &--dark{
         --backgroundColor: #{$backgroundColorDM};
@@ -45,5 +48,6 @@ $inputTextDM: #ffffff;
         --barColor: #{$barColorDM};
         --hamMenuColor: #{$hamMenuBgColorDM};
         --inputText: #{$inputTextDM};
+        --textSectionColor: #{$textSectionColorDM};
     }
 }

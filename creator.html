@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIFOS</title>
-    <link rel="stylesheet" type="text/css" href="./Styles/style.css">
+    <link rel="stylesheet" type="text/css" href="./Styles/creator.css">
     <script src="https://kit.fontawesome.com/daef4a3074.js" crossorigin="anonymous"></script>
 </head>
-<body class="theme" id="body">
+<body class="theme">
     <header>
         <div class="blue-bar-top"></div>
         <nav>
@@ -49,70 +49,50 @@
                     <span></span>
                     <span></span>
                 </div>
-                <ul id="menu" class="menu">
+                <ul>
                     <li>Modo Nocturno</li>
                     <li></li>
                     <li>Favoritos</li>
                     <li></li>
                     <li>Mis GIFOS</li>
                     <li></li>
-                    <a href="./creator.html"><li class="new-gifos-button"><span>+</span></li></a>
+                    <li class="new-gifos-button"><span>+</span></li>
                 </ul>
             </div>
         </nav>
     </header>
     <main>
-        <section class="search-section">
-            <div class="title-search-section">
-                <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h1>
-            </div>
-            <div class="searcher">
-                <img src="./Img/ilustra_header.svg" alt="">
-                <div class="search-bar-style">
-                    <input type="text" name="" id="" placeholder="Busca GIFOS y más" class="search-bar" maxlength="50">
-                    <i class="fas fa-search"></i>
+        <section class="creator-section">
+            <div class="creator-elements">
+                <div class="camera-area">
+                    <div class="cut-corner 1"></div>
+                    <div class="cut-corner 2"></div>
+                    <div class="cut-corner 3"></div>
+                    <div class="cut-corner 4"></div>
+                    <div class="content-camera-area">
+                        <h1>Aquí podrás crear tus propios <span>GIFOS</span></h1>
+                        <h2>¡Crea tu GIFO en sólo 3 pasos! 
+                        <br>(sólo necesitas una cámara para grabar un video)</h2>
+                    </div>
+                </div>
+                <div class="steps-elements">
+                    <div class="steps-numbers">
+                        <div class="step 1">1</div>
+                        <div class="step 2">2</div>
+                        <div class="step 3">3</div>
+                    </div>
+                    <div class="creator-bar"></div>
+                    <div class="start-button">
+                        <button>COMENZAR</button>
+                    </div>
                 </div>
             </div>
-            <div class="content-search-section">
-                <h2>Trending:</h2>
-                <p><span>Reactions</span>, <span>Entertainment</span>, <span>Sports</span>, <span>Stickers</span>, <span>Artists</span></p>
-            </div>
-        </section>
-        <section class="new-search-section">
-            <div class="bar-section"></div>
-            <div class="no-content-search-section">
-                <h1>text example</h1>
-                <img src="./Img/icon-busqueda-sin-resultado.svg" alt="">
-                <h2>Intenta con otra búsqueda.</h2>
-            </div>
-        </section>
-        <section class="fav-section">
-            <div class="title-fav-section">
-                <img src="./Img/icon-favoritos.svg" alt="">
-                <h1>Favoritos</h1>
-            </div>
-            <div class="no-content-fav-section">
-                <img src="./Img/icon-fav-sin-contenido.svg" alt="">
-                <h2>"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</h2>
-            </div>
-        </section>
-        <section class="misgifos-section">
-            <div class="title-misgifos-section">
-                <img src="./Img/icon-mis-gifos.svg" alt="">
-                <h1>Mis GIFOS</h1>
-            </div>
-            <div class="no-content-misgifos-section">
-                <img src="./Img/icon-mis-gifos-sin-contenido.svg" alt="">
-                <h2>¡Anímate a crear tu primer GIFO!</h2>
-            </div>
-        </section>
-        <section class="trending-section">
-            <div class="trending-section-content">
-                <h2>Trending GIFOS</h2>
-                <p>Mira los últimos GIFOS de nuestra comunidad.</p>
-            </div>
-            <div class="trending-img">
-                <img src="./img/a-tomar-por-saco-el-niño.gif" alt="">
+            <div class="img">
+                <div class="camera-img">
+                    <img src="./Img/camara.svg" alt="">
+                    <img src="./Img/element-luz-camara.svg" alt="" class="light">
+                </div>
+                <img src="./Img/pelicula.svg" alt="" class="reel">
             </div>
         </section>
     </main>
@@ -134,6 +114,6 @@
         </div>
         <div class="blue-bar-bot"></div>
     </footer>
-    <script src="./Scripts/main.js"></script>
+    <!-- <script src="./Scripts/main.js"></script> -->
 </body>
 </html>
