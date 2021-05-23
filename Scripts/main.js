@@ -1,9 +1,12 @@
 // Global Variables
 
 const BURGUER_ICON = document.querySelector(".burguer-icon");
-console.log(BURGUER_ICON);
+const DARKMODE_BUTTON = document.querySelector(".theme-button");
+const CLASSLIST_BODY = document.body.classList;
 
-// Mobile Version Functionalities
+// Mobile Version Functionalities and theme switch functionality
+
+// Ham Menu
 
 /**
  * display the menu when clicked in the menu icon
@@ -34,5 +37,52 @@ const noScrolling = function() {
     }
 }
 
-noScrolling();
+// Switch theme
+
+/**
+ *  validate the DarkModeStatus from the localstorage
+ */
+
+const getDarkModeStatus = () => {
+    return localStorage.getItem("modeStatus");
+}
+
+const setDarkModeStatus = (value) => {
+    localStorage.setItem("modeStatus", value.toString());
+}
+
+const validatorThemeStatus = function() {
+    if(getDarkModeStatus() === "true"){
+        CLASSLIST_BODY.add("theme--dark");
+        DARKMODE_BUTTON.innerText = "Modo Diurno";
+    } else {
+        CLASSLIST_BODY.remove("theme--dark");
+        DARKMODE_BUTTON.innerText = "Modo Nocturno";
+    }
+};
+
+/** 
+ * Switch to the Dark Mode 
+*/
+
+const themeSwitch = function() {
+    DARKMODE_BUTTON.addEventListener("click", switchTheme);
+    function switchTheme() {
+        if(CLASSLIST_BODY.contains("theme--dark")) {
+            DARKMODE_BUTTON.innerText = "Modo Nocturno";
+            setDarkModeStatus(false);
+        } else{
+            DARKMODE_BUTTON.innerText = "Modo Diurno";
+            setDarkModeStatus(true);
+        }
+        CLASSLIST_BODY.toggle("theme--dark");
+    }
+}
+
+
+// Triggers
+
 menuDisplay();
+noScrolling();
+validatorThemeStatus();
+themeSwitch();

@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIFOS</title>
-    <link rel="stylesheet" type="text/css" href="./Styles/style.css">
+    <link rel="stylesheet" type="text/css" href="./Styles/favs.css">
     <script src="https://kit.fontawesome.com/daef4a3074.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./Fonts/style.css">
 </head>
 <body class="theme" id="body">
     <header>
@@ -53,7 +52,7 @@
                 <ul id="menu" class="menu">
                     <li class="theme-button">Modo Nocturno</li>
                     <li></li>
-                    <a href="./favs.html"><li>Favoritos</li></a>
+                    <li>Favoritos</li>
                     <li></li>
                     <a href="./misgifos.html"><li>Mis GIFOS</li></a>
                     <li></li>
@@ -66,66 +65,14 @@
         </nav>
     </header>
     <main>
-        <section class="search-section">
-            <div class="title-search-section">
-                <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h1>
+        <section class="fav-section">
+            <div class="title-fav-section">
+                <img src="./Img/icon-favoritos.svg" alt="">
+                <h1>Favoritos</h1>
             </div>
-            <div class="searcher">
-                <img src="./Img/ilustra_header.svg" alt="">
-                <div class="search-bar-style">
-                    <input type="text" name="" id="" placeholder="Busca GIFOS y más" class="search-bar" maxlength="50" value="">
-                    <div class="input-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="active-search-bar">
-                        <i class="fas fa-search sug"></i>
-                        <div class="bar"></div>
-                        <div class="suggestions"> 
-                            <ul class="list-sug">
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-search-section">
-                <h2>Trending:</h2>
-                <p><span>Reactions</span>, <span>Entertainment</span>, <span>Sports</span>, <span>Stickers</span>, <span>Artists</span></p>
-            </div>
-        </section>
-        <section class="new-search-section">
-            <div class="bar-section"></div>
-            <div class="content-search-section">
-                <h1 class="title-search-elements">text example</h1>
-                <img src="./Img/icon-busqueda-sin-resultado.svg" alt="" id="not-found-img">
-                <h2 id="not-found-title">Intenta con otra búsqueda.</h2>
-                <div class="content-elements">
-                    <div class="gif-elements">
-                        <img src="./Img/a-tomar-por-saco-el-niño.gif" alt="">
-                        <div class="hover-color">
-                            <div class="hover-elements">
-                                <div class="icons-img">
-                                    <span class="icon-icon-download">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </span>
-                                    <span class="icon-icon-fav">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </span>
-                                    <span class="icon-icon-max-normal">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </span>
-                                </div>
-                                <div class="info-element">
-                                    <h5 class="username"></h5>
-                                    <h1 class="title-element"></h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="more-btn">VER MÁS</button>
+            <div class="no-content-fav-section">
+                <img src="./Img/icon-fav-sin-contenido.svg" alt="">
+                <h2>"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</h2>
             </div>
         </section>
         <section class="trending-section">
@@ -156,7 +103,6 @@
         </div>
         <div class="blue-bar-bot"></div>
     </footer>
-    <script type="module" src="./Scripts/main.js"></script>
-    <script type="module" src="./Scripts/search.js"></script>
+    <script src="./Scripts/main.js"></script>
 </body>
 </html>

@@ -23,6 +23,7 @@
   margin: 0;
   padding: 0;
   border: 0;
+  text-decoration: none;
 }
 
 /* Header y nav menu */
@@ -50,14 +51,11 @@ body header nav .logo .logo-svg #GIFOS {
   fill: var(--mainColor);
 }
 
-body header nav .hamMenu {
-  /* para mostrar menu cambiar el display a flex. */
-}
-
 body header nav .hamMenu .burguer-icon {
   position: absolute;
   top: 3.25rem;
   right: 1.63rem;
+  cursor: pointer;
 }
 
 body header nav .hamMenu .burguer-icon span {
@@ -66,6 +64,24 @@ body header nav .hamMenu .burguer-icon span {
   height: 0.125rem;
   margin-bottom: 0.3rem;
   background-color: var(--mainColor);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;
+}
+
+body header nav .hamMenu .burguer-open-icon span:nth-child(1) {
+  -webkit-transform: translateY(7px) rotate(45deg);
+          transform: translateY(7px) rotate(45deg);
+}
+
+body header nav .hamMenu .burguer-open-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+body header nav .hamMenu .burguer-open-icon span:nth-child(3) {
+  -webkit-transform: translateY(-7px) rotate(-45deg);
+          transform: translateY(-7px) rotate(-45deg);
 }
 
 body header nav .hamMenu ul {
@@ -73,10 +89,12 @@ body header nav .hamMenu ul {
   top: 6.25rem;
   list-style: none;
   background-color: var(--hamMenuColor);
-  height: 100%;
+  height: 0;
   overflow: hidden;
   width: 100%;
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -84,6 +102,9 @@ body header nav .hamMenu ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 1;
+  -webkit-transition: height 0.5s ease-out;
+  transition: height 0.5s ease-out;
 }
 
 body header nav .hamMenu ul li:nth-child(2n) {
@@ -101,6 +122,7 @@ body header nav .hamMenu ul li {
   letter-spacing: 0;
   line-height: 1.88rem;
   margin: 2rem 0 0.69rem 0;
+  text-align: center;
 }
 
 body header nav .hamMenu ul li:hover {
@@ -126,12 +148,26 @@ body header nav .hamMenu ul .new-gifos-button span {
   font-weight: lighter;
   position: relative;
   top: 35%;
-  left: 33%;
   color: #ffffff;
 }
 
 body header nav .hamMenu ul .new-gifos-button:hover {
   border-bottom: 2px solid #9cafc3;
+}
+
+body header nav .hamMenu ul .creator {
+  display: block;
+  color: #9cafc3;
+}
+
+body header nav .hamMenu ul .creator:hover {
+  border-bottom: none;
+}
+
+body header nav .hamMenu .display-menu {
+  height: 100%;
+  -webkit-transition: height 0.5s ease-in;
+  transition: height 0.5s ease-in;
 }
 
 body main {
@@ -433,8 +469,11 @@ body footer .blue-bar-bot {
   body header nav .hamMenu ul li:nth-child(2n + 3) {
     margin: 0;
   }
-  body header nav .hamMenu ul li:nth-last-child(1) {
+  body header nav .hamMenu ul .new-gifos-button {
     display: block;
+  }
+  body header nav .hamMenu ul .creator {
+    display: none;
   }
   body main {
     /* Desktop Creator Section */
@@ -572,8 +611,11 @@ body footer .blue-bar-bot {
   body header nav .hamMenu ul li:nth-child(2n + 3) {
     margin: 0;
   }
-  body header nav .hamMenu ul li:nth-last-child(1) {
+  body header nav .hamMenu ul .new-gifos-button {
     display: block;
+  }
+  body header nav .hamMenu ul .creator {
+    display: none;
   }
   body main {
     /* Tablet Creator Section */

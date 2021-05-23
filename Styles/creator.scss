@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    text-decoration: none;
 }
 
 // Mobile version
@@ -34,29 +35,41 @@ body{
                     position: absolute;
                     top: 3.25rem;
                     right: 1.63rem;
+                    cursor: pointer;
                     span{
                         display: block;
                         width: 0.94rem;
                         height: 0.125rem;
                         margin-bottom: 0.3rem;
                         background-color: var(--mainColor);
+                        transition: transform 0.5s ease, opacity 0.5s ease;
                     }
                 }
-
-                
-    /* para mostrar menu cambiar el display a flex. */
-
+                .burguer-open-icon{
+                    
+                    span:nth-child(1){
+                        transform: translateY(7px) rotate(45deg);
+                    }
+                    span:nth-child(2){
+                        opacity: 0;
+                    }
+                    span:nth-child(3){
+                        transform: translateY(-7px) rotate(-45deg);
+                    }
+                }
                 ul{
                     position: absolute;
                     top: 6.25rem;
                     list-style: none;
                     background-color: var(--hamMenuColor);
-                    height: 100%;
+                    height: 0;
                     overflow: hidden;
                     width: 100%;
-                    display: none;
+                    display: flex;
                     flex-direction: column;
                     align-items: center;
+                    z-index: 1;
+                    transition: height 0.5s ease-out;
                     li:nth-child(2n){
                         height: 0.01rem;
                         width: 2.56rem;
@@ -71,6 +84,7 @@ body{
                         letter-spacing: 0;
                         line-height: 1.88rem;
                         margin: 2rem 0 0.69rem 0;
+                        text-align: center;
                     }
                     li:hover{
                         border-bottom: 2px solid $textSectionColor;
@@ -91,13 +105,23 @@ body{
                             font-weight: lighter;
                             position: relative;
                             top: 35%;
-                            left: 33%;
                             color: #ffffff;
                         }
                     }
                     .new-gifos-button:hover{
                         border-bottom: 2px solid $thirdColor;
                     }
+                    .creator{
+                        display: block;
+                        color: $thirdColor;
+                    }
+                    .creator:hover{
+                        border-bottom: none;
+                    }
+                }
+                .display-menu{
+                    height: 100%;
+                    transition: height 0.5s ease-in;
                 }
             }
         }
@@ -339,8 +363,11 @@ body{
                         li:nth-child(2n + 3){
                             margin: 0;
                         }
-                        li:nth-last-child(1){
+                        .new-gifos-button{
                             display: block;
+                        }
+                        .creator{
+                            display: none;
                         }
                     }
                 }
@@ -478,8 +505,11 @@ body{
                         li:nth-child(2n + 3){
                             margin: 0;
                         }
-                        li:nth-last-child(1){
+                        .new-gifos-button{
                             display: block;
+                        }
+                        .creator{
+                            display: none;
                         }
                     }
                 }   
