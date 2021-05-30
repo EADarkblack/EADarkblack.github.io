@@ -7,6 +7,7 @@
   --hamMenuColor: #572ee5e6;
   --inputText: #000000;
   --textSectionColor: #50e3c2;
+  --backgroundColorGradient: #ffffffe6;
 }
 
 .theme--dark {
@@ -17,5 +18,6 @@
   --hamMenuColor: #000000e6;
   --inputText: #ffffff;
   --textSectionColor: #ffffff;
+  --backgroundColorGradient: #37383ce6;
 }
 /*# sourceMappingURL=variables.css.map */

@@ -1,4 +1,5 @@
 import api from './../Services/services.js'
+import fav from './favorite.js'
 
 // Variables//
 
@@ -30,6 +31,7 @@ const searchResults = function() {
     .then(res => {
         const {data} = res;
         showResults(data);
+        dataFavIconToggle();
     })
     .catch(err => {
         console.error(`Error al conectarse con la Api de busqueda.`, err);
@@ -46,20 +48,20 @@ const showResults = function(data) {
         notFoundImg.style.display = "none";
         notFoundText.style.display = "none";
         totalResults += data.length;
-        for (let i = 0; i < data.length; i++) {
-            console.log(data);
+        for (let i = 0; i < data.length; i++) {  
             containerResults.innerHTML += 
             `
-                <div class="gif-elements">
-                <img src="${data[i].images.original.url}" alt="">
-                <div class="hover-color">
-                    <div class="hover-elements">
+                <div class="gif-elements" id="${data[i].id}">
+                <figure>
+                    <img src="${data[i].images.downsized_medium.url}" alt="">
+                    <div class="layer">
                         <div class="icons-img">
-                            <span class="icon-icon-download">
+                            <span class="icon-icon-fav" id="${data[i].id}">
+                                <span class="icon-icon-fav-active"></span>
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-fav">
+                            <span class="icon-icon-download">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
@@ -73,10 +75,12 @@ const showResults = function(data) {
                             <h1 class="title-element">${data[i].title}</h1>
                         </div>
                     </div>
-                </div>
+                </figure>
             </div>
             `
         }
+        addBtnIconFav();
+        expandEventGifElement();
     }
 }
 
@@ -102,7 +106,7 @@ const autocompleteEngine = function() {
     api.apiAutocomplete(search)
     .then(res => {
         const {data} = res;
-        listAutocomplete.innerHTML = '';
+        listAutocomplete.innerHTML = "";
         showSuggestions(data);
     })
     .catch(err => {
@@ -120,7 +124,7 @@ const showSuggestions = function(data) {
             let nameData = data[i].name;
             nameData = data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1);
             listAutocomplete.innerHTML += `
-            <li class="suggestion"><i class="fas fa-search sug 1"> ${nameData}</i></li>
+            <li class="suggestion"><i class="fas fa-search sug 1"><span>${nameData}</span></i></li>
             `
         }
         setAutocomplete();
@@ -147,11 +151,13 @@ const setAutocomplete = function() {
 
 const setSearchAutocomplete = function() {
     searchInput.value = event.target.innerText.replace('suggestion-', '');
+    totalResults = 0;
     searchResults();
     searchBar.classList.remove("active");
     containerResults.innerHTML = "";
     notFoundImg.style.display = "unset";
     notFoundText.style.display = "unset";
+    listAutocomplete.innerHTML = "";
 };
 
 /**
@@ -170,7 +176,7 @@ const toggleIcon = function() {
 }
 
 /**
- * Resets the search engine to the deafult settings when the user click to the X
+ * Resets the search engine to the default settings when the user click to the X
  */
 
 const resetInputSearch = function() {
@@ -179,9 +185,148 @@ const resetInputSearch = function() {
         searchInput.value = "";
         inputIcon.innerHTML = `<i class="fas fa-search"></i>`;
         searchBar.classList.remove("active");
+        listAutocomplete.innerHTML = "";
     });
 }
 
+/**
+ * Sets the favorite button for all searched gifs
+ */
+
+const addBtnIconFav = function() {
+    const content = document.querySelectorAll(".icon-icon-fav");
+    for (let i = 0; i < content.length; i++) {
+        content[i].addEventListener("click", () => {
+            fav.addFavorite(content[i].id);
+        });
+    };
+}
+
+/**
+ * Changes the style to the favorite button getting the data from LocalStorage
+ */
+
+const dataFavIconToggle = function() {
+    const iconActive = document.querySelectorAll(".icon-icon-fav");
+    const favElements = fav.getFavElementsLS() || [];
+    let gifId = []; 
+    for (let i = 0; i < iconActive.length; i++) {
+        gifId.push(iconActive[i].id);
+        if (favElements.some((favArray) => favArray.id === iconActive[i].id)) {
+            iconActive[i].classList.add("active-fav");
+        }
+    }
+}
+
+/**
+ * Adds the click event for every gif container
+ */
+
+const expandEventGifElement = function() {
+    const gifsElements = document.querySelectorAll(".gif-elements");
+    for (let i = 0; i < gifsElements.length; i++) {
+        api.apiGetFavoriteId(gifsElements[i].id)
+        .then(res => {
+            const {data} = res;
+            gifsElements[i].addEventListener("click", () => {
+                expandGif(data);
+            });
+        })
+    }
+}
+
+/**
+ * Shows the expanded version of the image
+*/
+
+const expandGif = function(data) {
+    const expandContainer = document.querySelector(".expand-view");
+    window.scroll(0, 0);
+    document.body.style.overflow = "hidden";
+    expandContainer.innerHTML = `
+            <div class="expand-elements">
+            <div class="close-icon">
+                <span></span>
+                <span></span>
+            </div>
+            <div class="expand-img">
+                <img src="${data.images.original.url}" alt="">
+            </div>
+            <div class="expand-info-elements">
+                <div class="expand-info">
+                    <h5 class="username">${data.username}</h5>
+                    <h1 class="title-element">${data.title}</h1>
+                </div>
+                <div class="expand-icons">
+                    <span class="icon-icon-fav expand" id="${data.id}">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="icon-icon-fav-active"></span>
+                    </span>
+                    <span class="icon-icon-download expand-download">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    `
+    closeExpandView();
+    addFavExpand(data);
+    const iconActiveExpand = document.querySelectorAll(".expand");
+    const favElements = fav.getFavElementsLS() || [];
+    for (let i = 0; i < iconActiveExpand.length; i++) {
+        if (favElements.some((favArray) => favArray.id === iconActiveExpand[i].id)) {
+            iconActiveExpand[i].classList.add("active-fav-expand");
+        }
+    }
+    const downloadBtnExpand = document.querySelector(".expand-download");
+    downloadBtnExpand.addEventListener("click", () => {
+        downloadFunction(data);
+    });  
+}
+
+/**
+ * Adds the event to the X button when the gif is in fullscreen mode
+ */
+
+const closeExpandView = function() {
+    const close = document.querySelector(".close-icon");
+    close.addEventListener("click", () => {
+        const expandContainer = document.querySelector(".expand-view");
+        window.scroll(0, 650);
+        document.body.style.overflow = "initial";
+        expandContainer.innerHTML = ``;
+    })
+}
+
+/**
+ * Adds functionality to the favorite button in the fullscreen mode
+ */
+
+const addFavExpand = function(data) {
+    const favBtnExpand = document.querySelector(".expand");
+    favBtnExpand.addEventListener("click", () => {
+        fav.addFavorite(data.id);
+    })
+}
+
+/**
+ * Transform the gif into a local object and creates its respective download url
+ */
+
+const downloadFunction = function(data) {
+    async function createUrlGif () {
+        let a = document.createElement("a");
+        let response = await fetch(`${data.images.original.url}`);
+        let file = await response.blob();
+        a.download = `${data.title}`;
+        a.href = window.URL.createObjectURL(file);
+        a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+        a.click();
+    };
+    return createUrlGif();
+}
 
 // Listeners
 
@@ -191,8 +336,10 @@ searchInput.addEventListener("keyup", (e) => {
         containerResults.innerHTML = "";
         notFoundImg.style.display = "unset";
         notFoundText.style.display = "unset";
+        totalResults = 0;
         searchResults();
         searchBar.classList.remove("active");
+        listAutocomplete.innerHTML = "";
 
     }
 });

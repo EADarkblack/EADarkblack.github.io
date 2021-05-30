@@ -15,6 +15,7 @@ $secondColor: #6b7989;
 $sectionBackgroundColor: #f3f5f8;
 $thirdColor: #9cafc3;
 $backgroundColor: #ffffff;
+$backgroundColorGradient: #ffffffe6;
 $barColor: #572ee5;
 $inputText: #000000;
 $textSectionColor: #50e3c2;
@@ -23,6 +24,7 @@ $textSectionColor: #50e3c2;
 
 $barColorDM: #000000;
 $backgroundColorDM: #37383c;
+$backgroundColorGradientDM: #37383ce6;
 $mainColorDM: #ffffff;
 $sectionBackgroundColorDM: #222326;
 $hamMenuBgColorDM: #000000e6;
@@ -40,6 +42,7 @@ $textSectionColorDM: #ffffff;
     --hamMenuColor: #{$hamMenuBgColor};
     --inputText: #{$inputText};
     --textSectionColor: #{$textSectionColor};
+    --backgroundColorGradient: #{$backgroundColorGradient};
 
     &--dark{
         --backgroundColor: #{$backgroundColorDM};
@@ -49,5 +52,6 @@ $textSectionColorDM: #ffffff;
         --hamMenuColor: #{$hamMenuBgColorDM};
         --inputText: #{$inputTextDM};
         --textSectionColor: #{$textSectionColorDM};
+        --backgroundColorGradient: #{$backgroundColorGradientDM};
     }
 }

@@ -1,13 +1,16 @@
-const APIKEY = `p7KQJzpXhEY1U6ksV908AMcBTMKz9l22`
-const TRENDING_EP = `https://api.giphy.com/v1/gifs/trending`
-const SEARCH_EP = 'https://api.giphy.com/v1/gifs/search'
+const APIKEY = "p7KQJzpXhEY1U6ksV908AMcBTMKz9l22"
+const TRENDING_EP = "https://api.giphy.com/v1/gifs/trending"
+const SEARCH_EP = "https://api.giphy.com/v1/gifs/search"
 const UPLOAD_EP = "https://upload.giphy.com/v1/gifs"
 const AUTOCOMPLETE_EP = "https://api.giphy.com/v1/gifs/search/tags"
+const FAVORITE_EP = "https://api.giphy.com/v1/gifs/"
 
 export default {
+
     /**
      * Returns the search made by the user
      */
+    
     apiSearch(search, offset) {
         return new Promise ((resolve, reject) => {
             fetch(`${SEARCH_EP}?api_key=${APIKEY}&q=${search}&limit=12&offset=${offset}`)
@@ -16,6 +19,7 @@ export default {
             .catch(err => reject(err));
         });
     },
+
     /**
     * Returns the data to the isearch engine to make the autocomplete option
     */
@@ -28,6 +32,19 @@ export default {
             .catch(err => reject(err));
         })
     },
+
+    /**
+     * Returns the id from every gif chosen by the user
+     */
+
+    apiGetFavoriteId(id) {
+        return new Promise ((resolve, reject) =>{
+            fetch(`${FAVORITE_EP}${id}?api_key=${APIKEY}`)
+            .then(res => res.json())
+            .then(data => resolve(data))
+            .catch(err => reject(err));
+        })
+    }
 }
 
 

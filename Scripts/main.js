@@ -25,7 +25,7 @@ const menuDisplay = function() {
  * block the scroll when the menu is active
  */
 
-const noScrolling = function() {
+export const noScrolling = function() {
     BURGUER_ICON.addEventListener("click", disableScroll);  
     function disableScroll(){
         let bodyNoScroll = document.getElementById("body");
