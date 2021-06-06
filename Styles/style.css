@@ -37,8 +37,8 @@ body .expand-elements {
   display: block;
   height: 100%;
   width: 100%;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(80%, var(--backgroundColor)), color-stop(20%, var(--backgroundColorGradient)));
-  background: linear-gradient(0deg, var(--backgroundColor) 80%, var(--backgroundColorGradient) 20%);
+  background: -webkit-gradient(linear, left bottom, left top, from(var(--backgroundColor)), to(var(--backgroundColorGradient)));
+  background: linear-gradient(0deg, var(--backgroundColor) 0%, var(--backgroundColorGradient) 100%);
   z-index: 3;
   position: absolute;
 }
@@ -72,7 +72,7 @@ body .expand-elements .expand-img {
 }
 
 body .expand-elements .expand-img img {
-  height: 100%;
+  max-height: 20rem;
   width: 100%;
 }
 
@@ -818,13 +818,229 @@ body main .trending-section .trending-section-content p {
   color: var(--inputText);
 }
 
-body main .trending-section .trending-img {
+body main .trending-section .trends-gif-elements {
   padding-bottom: 5.13rem;
+  margin: 0 1.38rem;
 }
 
-body main .trending-section .trending-img img {
+body main .trending-section .trends-gif-elements .button-slider {
+  border: 1px solid var(--mainColor);
+  height: 2.5rem;
+  width: 2.5rem;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+body main .trending-section .trends-gif-elements .button-slider span {
+  color: var(--mainColor);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+body main .trending-section .trends-gif-elements .button-slider:hover {
+  background-color: var(--mainColor);
+}
+
+body main .trending-section .trends-gif-elements .button-slider:hover span {
+  color: var(--backgroundColor);
+}
+
+body main .trending-section .trends-gif-elements .trending-container {
+  width: 100%;
   height: 11.69rem;
-  width: 15.19rem;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container {
+  height: 100%;
+  width: 1200%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -ms-touch-action: none;
+      touch-action: none;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings {
+  width: 8.33%;
+  margin-right: 1.38rem;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure img {
+  width: 100%;
+  height: 100%;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #572ee5e6;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img {
+  margin: 0.63rem 0.63rem 0 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2rem 2rem 2rem;
+      grid-template-columns: 2rem 2rem 2rem;
+  -ms-grid-rows: 2rem;
+      grid-template-rows: 2rem;
+  -webkit-column-gap: 0.69rem;
+          column-gap: 0.69rem;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-fav {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 1.3rem;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-fav .icon-icon-fav-active {
+  position: relative;
+  left: 1.61rem;
+  z-index: 1;
+  font-size: 1.13rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  opacity: 0;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .active-fav {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .active-fav .icon-icon-fav-active {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-download {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-max-normal {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-fav:hover {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-download:hover {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-max-normal:hover {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .info-element {
+  margin: 0 0 0.38rem 0.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .info-element h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+  color: #ffffff;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.13rem;
+  margin-bottom: 0.31rem;
+  text-align: left;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .info-element h1 {
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.19rem;
+  text-align: left;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure:hover > .layer {
+  opacity: 0;
 }
 
 body footer {
@@ -1072,13 +1288,75 @@ body footer .blue-bar-bot {
     line-height: 1.31rem;
     margin: 0 0 3.31rem 0;
   }
-  body main .trending-section .trending-img {
+  body main .trending-section .trends-gif-elements {
     padding-bottom: 11.38rem;
-    text-align: center;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2.5rem 1fr 2.5rem;
+        grid-template-columns: 2.5rem 1fr 2.5rem;
+    -webkit-column-gap: 1.38rem;
+            column-gap: 1.38rem;
+    margin: 0 5.88rem;
   }
-  body main .trending-section .trending-img img {
+  body main .trending-section .trends-gif-elements .button-slider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body main .trending-section .trends-gif-elements .trending-container {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    overflow: hidden;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    width: 400%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    overflow: initial;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 25%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    -webkit-transition: unset;
+    transition: unset;
+    -ms-touch-action: unset;
+        touch-action: unset;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
     height: 17.19rem;
-    width: 22.31rem;
+    width: 100%;
+    margin-right: 0;
+    padding-right: 1.81rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure:hover > .layer {
+    opacity: 1;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings:nth-last-child(1) {
+    padding-right: 0;
   }
   body footer {
     text-align: unset;
@@ -1321,13 +1599,74 @@ body footer .blue-bar-bot {
     line-height: 1.31rem;
     margin: 0 0 3.31rem 0;
   }
-  body main .trending-section .trending-img {
-    padding-bottom: 11.38rem;
-    text-align: center;
+  body main .trending-section .trends-gif-elements {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2.5rem 1fr 2.5rem;
+        grid-template-columns: 2.5rem 1fr 2.5rem;
+    -webkit-column-gap: 1.38rem;
+            column-gap: 1.38rem;
+    margin: 0 3rem;
   }
-  body main .trending-section .trending-img img {
-    height: 17.19rem;
-    width: 22.31rem;
+  body main .trending-section .trends-gif-elements .button-slider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body main .trending-section .trends-gif-elements .trending-container {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    overflow: hidden;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    width: 400%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    overflow: initial;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 25%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    -webkit-transition: unset;
+    transition: unset;
+    -ms-touch-action: unset;
+        touch-action: unset;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    height: 14rem;
+    width: 100%;
+    margin-right: 0;
+    padding-right: 1rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure:hover > .layer {
+    opacity: 1;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings:nth-last-child(1) {
+    padding-right: 0;
   }
   body footer {
     text-align: unset;

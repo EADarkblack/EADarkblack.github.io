@@ -1,13 +1,12 @@
 import api from './../Services/services.js'
-import fav from './favorite.js'
 
 // Variables//
 
 const searchInput = document.querySelector(".search-bar");
-const containerResults = document.querySelector(".content-elements");
+export const containerResults = document.querySelector(".content-elements");
 const searchBtnActive = document.querySelector(".sug");
 const searchBtn = document.querySelector(".fa-search");
-const showMoreBtn = document.querySelector(".more-btn");
+export const showMoreBtn = document.querySelector(".more-btn");
 const displaySection = document.querySelector(".new-search-section");
 const notFoundImg = document.querySelector("#not-found-img");
 const notFoundText = document.querySelector("#not-found-title");
@@ -16,6 +15,9 @@ const searchBar = document.querySelector(".search-bar-style");
 const inputIcon = document.querySelector(".input-icon");
 let titleSearch = document.querySelector(".title-search-elements");
 let totalResults = 0;
+export let windowWidth = window.innerWidth;
+
+// Functions
 
 /**
  *  Receive the data from the api to display it on the screen
@@ -34,7 +36,7 @@ const searchResults = function() {
         dataFavIconToggle();
     })
     .catch(err => {
-        console.error(`Error al conectarse con la Api de busqueda.`, err);
+        console.error(`Error al conectarse con la Api de busqueda: ${err}`);
     });
 }
 
@@ -48,10 +50,10 @@ const showResults = function(data) {
         notFoundImg.style.display = "none";
         notFoundText.style.display = "none";
         totalResults += data.length;
-        for (let i = 0; i < data.length; i++) {  
+        for (let i = 0; i < data.length; i++) { 
             containerResults.innerHTML += 
             `
-                <div class="gif-elements" id="${data[i].id}">
+                <div class="gif-elements" id="el-${data[i].id}">
                 <figure>
                     <img src="${data[i].images.downsized_medium.url}" alt="">
                     <div class="layer">
@@ -61,11 +63,11 @@ const showResults = function(data) {
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-download">
+                            <span class="icon-icon-download" id="dow-${data[i].id}">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-max-normal">
+                            <span class="icon-icon-max-normal" id="exp-${data[i].id}">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
@@ -79,8 +81,13 @@ const showResults = function(data) {
             </div>
             `
         }
-        addBtnIconFav();
-        expandEventGifElement();
+        if (windowWidth >= 768) {
+            addBtnIconFav();
+            addDownloadBtn();
+            addExpandBtn();
+        } else{
+            expandEventGifElement();
+        }
     }
 }
 
@@ -193,11 +200,11 @@ const resetInputSearch = function() {
  * Sets the favorite button for all searched gifs
  */
 
-const addBtnIconFav = function() {
+export const addBtnIconFav = function() {
     const content = document.querySelectorAll(".icon-icon-fav");
     for (let i = 0; i < content.length; i++) {
         content[i].addEventListener("click", () => {
-            fav.addFavorite(content[i].id);
+            api.addFavorite(content[i].id);
         });
     };
 }
@@ -206,9 +213,9 @@ const addBtnIconFav = function() {
  * Changes the style to the favorite button getting the data from LocalStorage
  */
 
-const dataFavIconToggle = function() {
+export const dataFavIconToggle = function() {
     const iconActive = document.querySelectorAll(".icon-icon-fav");
-    const favElements = fav.getFavElementsLS() || [];
+    const favElements = api.getFavElementsLS() || [];
     let gifId = []; 
     for (let i = 0; i < iconActive.length; i++) {
         gifId.push(iconActive[i].id);
@@ -222,16 +229,18 @@ const dataFavIconToggle = function() {
  * Adds the click event for every gif container
  */
 
-const expandEventGifElement = function() {
+export const expandEventGifElement = function() {
     const gifsElements = document.querySelectorAll(".gif-elements");
     for (let i = 0; i < gifsElements.length; i++) {
-        api.apiGetFavoriteId(gifsElements[i].id)
+        const gifExpandId = gifsElements[i].id;
+        const id = gifExpandId.replace("el-", "");
+        api.apiGetFavoriteId(id)
         .then(res => {
             const {data} = res;
             gifsElements[i].addEventListener("click", () => {
                 expandGif(data);
             });
-        })
+        });
     }
 }
 
@@ -239,7 +248,7 @@ const expandEventGifElement = function() {
  * Shows the expanded version of the image
 */
 
-const expandGif = function(data) {
+export const expandGif = function(data) {
     const expandContainer = document.querySelector(".expand-view");
     window.scroll(0, 0);
     document.body.style.overflow = "hidden";
@@ -274,7 +283,7 @@ const expandGif = function(data) {
     closeExpandView();
     addFavExpand(data);
     const iconActiveExpand = document.querySelectorAll(".expand");
-    const favElements = fav.getFavElementsLS() || [];
+    const favElements = api.getFavElementsLS() || [];
     for (let i = 0; i < iconActiveExpand.length; i++) {
         if (favElements.some((favArray) => favArray.id === iconActiveExpand[i].id)) {
             iconActiveExpand[i].classList.add("active-fav-expand");
@@ -283,7 +292,7 @@ const expandGif = function(data) {
     const downloadBtnExpand = document.querySelector(".expand-download");
     downloadBtnExpand.addEventListener("click", () => {
         downloadFunction(data);
-    });  
+    });
 }
 
 /**
@@ -307,7 +316,7 @@ const closeExpandView = function() {
 const addFavExpand = function(data) {
     const favBtnExpand = document.querySelector(".expand");
     favBtnExpand.addEventListener("click", () => {
-        fav.addFavorite(data.id);
+        api.addFavorite(data.id);
     })
 }
 
@@ -328,22 +337,127 @@ const downloadFunction = function(data) {
     return createUrlGif();
 }
 
-// Listeners
+/**
+ *  Adds functionality to the download button no fullscreen mode
+ */
 
-searchInput.addEventListener("keyup", (e) => {
-    if(e.keyCode === 13){
-        e.preventDefault();
-        containerResults.innerHTML = "";
-        notFoundImg.style.display = "unset";
-        notFoundText.style.display = "unset";
-        totalResults = 0;
-        searchResults();
-        searchBar.classList.remove("active");
-        listAutocomplete.innerHTML = "";
+ export const addDownloadBtn = function() {
+    const downloadBtn = document.querySelectorAll(".icon-icon-download");
+    for (let i = 0; i < downloadBtn.length; i++) {
+        const downloadIdBtn = downloadBtn[i].id;
+        const idDownload = downloadIdBtn.replace("dow-", "");
+        api.apiGetFavoriteId(idDownload)
+        .then(res => {
+            const {data} = res;
+            downloadBtn[i].addEventListener("click", () => {
+                downloadFunction(data);
+            });
+        });
+    };
+}
 
+/**
+ * Adds functionality to the fullscreen button for every gif
+ */
+
+export const addExpandBtn = function() {
+    const addExpandBtn = document.querySelectorAll(".icon-icon-max-normal");
+    for (let i = 0; i < addExpandBtn.length; i++) {
+        const expandIdBtn = addExpandBtn[i].id;
+        const idExpand = expandIdBtn.replace("exp-", "");
+        api.apiGetFavoriteId(idExpand)
+        .then(res => {
+            const {data} = res;
+            addExpandBtn[i].addEventListener("click", () => {
+                expandGif(data);
+            });
+        });
+    };
+}
+
+/**
+ * Gets from the Api a trend's list to show
+ */
+
+export const getSuggestionsList = function() {
+    api.apiGetTrendingSearches()
+    .then(res => {
+        const {data} = res;
+        showSuggestionList(data);
+    })
+    .catch(err => {
+        console.error(`Error al conectarse con la Api de sugerencias por busqueda: ${err}`);
+    });
+}
+
+/**
+ * Receive the data from the Api to print it in the screen
+ */
+
+const showSuggestionList = function(data) {
+    const sugListContainer = document.querySelector(".suggest-list");
+    sugListContainer.innerHTML = `
+        <span class="trend-list">${data[0]}</span>,
+        <span class="trend-list">${data[1]}</span>,
+        <span class="trend-list">${data[2]}</span>,
+        <span class="trend-list">${data[3]}</span>,
+        <span class="trend-list">${data[4]}</span>
+    `
+    trendListEvent();
+}
+
+/**
+ * Adds a click event for every list element
+ */
+
+const trendListEvent = function() {
+    const sugList = document.querySelectorAll(".trend-list");
+    for (let i = 0; i < sugList.length; i++) {
+        sugList[i].addEventListener("click", setTrendListToSearch);
     }
-});
-searchBtnActive.addEventListener("click", searchResults);
-searchBtn.addEventListener("click", searchResults);
-showMoreBtn.addEventListener("click", searchResults);
-searchInput.addEventListener("input", autocompleteEngine);
+}
+
+/**
+ * Sends to the search engine the text content by the list element and refresh the page for each new search
+ */
+
+const setTrendListToSearch = function() {
+    searchInput.value = event.target.innerText.replace('suggestion-', '');
+    totalResults = 0;
+    searchResults();
+    containerResults.innerHTML = "";
+    notFoundImg.style.display = "unset";
+    notFoundText.style.display = "unset";
+    toggleIcon();
+}
+
+/**
+ * Detects if the searchInput exists and execute all events from this (used for avoid crash in other sections)
+ */
+
+const eventHandleSearch = function() {
+    if (searchInput) {
+        searchInput.addEventListener("keyup", (e) => {
+            if(e.keyCode === 13){
+                e.preventDefault();
+                containerResults.innerHTML = "";
+                notFoundImg.style.display = "unset";
+                notFoundText.style.display = "unset";
+                totalResults = 0;
+                searchResults();
+                searchBar.classList.remove("active");
+                listAutocomplete.innerHTML = "";
+        
+            }
+        });
+        searchBtnActive.addEventListener("click", searchResults);
+        searchInput.addEventListener("input", autocompleteEngine);
+        searchBtn.addEventListener("click", searchResults);
+        showMoreBtn.addEventListener("click", searchResults);
+        getSuggestionsList();
+    }
+}
+
+// Triggers
+
+eventHandleSearch();

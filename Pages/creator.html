@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIFOS</title>
-    <link rel="stylesheet" type="text/css" href="./Styles/favs.css">
+    <link rel="stylesheet" type="text/css" href="../Styles/creator.css">
     <script src="https://kit.fontawesome.com/daef4a3074.js" crossorigin="anonymous"></script>
 </head>
 <body class="theme" id="body">
@@ -13,7 +13,7 @@
         <div class="blue-bar-top"></div>
         <nav>
             <div class="logo">
-                <a href="./index.html">
+                <a href="../index.html">
                     <?xml version="1.0" encoding="UTF-8"?>
                     <svg width="63px" height="60px" viewBox="0 0 63 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="logo-svg"> 
                         <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
@@ -52,36 +52,50 @@
                 <ul id="menu" class="menu">
                     <li class="theme-button">Modo Nocturno</li>
                     <li></li>
-                    <li>Favoritos</li>
+                    <a href="../Pages/favs.html"><li>Favoritos</li></a>
                     <li></li>
-                    <a href="./misgifos.html"><li>Mis GIFOS</li></a>
+                    <a href="../Pages/mis-gifos.html"><li>Mis GIFOS</li></a>
                     <li></li>
-                    <a href="./creator.html"><li class="new-gifos-button"><span>+</span></li></a>
+                    <li class="new-gifos-button"><span>+</span></li>
                     <li></li>
-                    <a href="./creator.html"><li class="creator">Crear GIFO</li></a>
+                    <li class="creator">Crear GIFO</li>
                     <li></li>
                 </ul>
             </div>
         </nav>
     </header>
     <main>
-        <section class="fav-section">
-            <div class="title-fav-section">
-                <img src="./Img/icon-favoritos.svg" alt="">
-                <h1>Favoritos</h1>
+        <section class="creator-section">
+            <div class="creator-elements">
+                <div class="camera-area">
+                    <div class="cut-corner 1"></div>
+                    <div class="cut-corner 2"></div>
+                    <div class="cut-corner 3"></div>
+                    <div class="cut-corner 4"></div>
+                    <div class="content-camera-area">
+                        <h1>Aquí podrás crear tus propios <span>GIFOS</span></h1>
+                        <h2>¡Crea tu GIFO en sólo 3 pasos! 
+                        <br>(sólo necesitas una cámara para grabar un video)</h2>
+                    </div>
+                </div>
+                <div class="steps-elements">
+                    <div class="steps-numbers">
+                        <div class="step 1">1</div>
+                        <div class="step 2">2</div>
+                        <div class="step 3">3</div>
+                    </div>
+                    <div class="creator-bar"></div>
+                    <div class="start-button">
+                        <button>COMENZAR</button>
+                    </div>
+                </div>
             </div>
-            <div class="no-content-fav-section">
-                <img src="./Img/icon-fav-sin-contenido.svg" alt="">
-                <h2>"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</h2>
-            </div>
-        </section>
-        <section class="trending-section">
-            <div class="trending-section-content">
-                <h2>Trending GIFOS</h2>
-                <p>Mira los últimos GIFOS de nuestra comunidad.</p>
-            </div>
-            <div class="trending-img">
-                <img src="./img/a-tomar-por-saco-el-niño.gif" alt="">
+            <div class="img">
+                <div class="camera-img">
+                    <img src="../Img/camara.svg" alt="">
+                    <img src="../Img/element-luz-camara.svg" alt="" class="light">
+                </div>
+                <img src="../Img/pelicula.svg" alt="" class="reel">
             </div>
         </section>
     </main>
@@ -103,6 +117,6 @@
         </div>
         <div class="blue-bar-bot"></div>
     </footer>
-    <script src="./Scripts/main.js"></script>
+    <script src="../Scripts/main.js"></script>
 </body>
 </html>

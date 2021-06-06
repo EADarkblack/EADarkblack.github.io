@@ -4,9 +4,7 @@ const BURGUER_ICON = document.querySelector(".burguer-icon");
 const DARKMODE_BUTTON = document.querySelector(".theme-button");
 const CLASSLIST_BODY = document.body.classList;
 
-// Mobile Version Functionalities and theme switch functionality
-
-// Ham Menu
+// Functions
 
 /**
  * display the menu when clicked in the menu icon
@@ -25,7 +23,7 @@ const menuDisplay = function() {
  * block the scroll when the menu is active
  */
 
-export const noScrolling = function() {
+const noScrolling = function() {
     BURGUER_ICON.addEventListener("click", disableScroll);  
     function disableScroll(){
         let bodyNoScroll = document.getElementById("body");
@@ -36,8 +34,6 @@ export const noScrolling = function() {
         }
     }
 }
-
-// Switch theme
 
 /**
  *  validate the DarkModeStatus from the localstorage
@@ -78,7 +74,6 @@ const themeSwitch = function() {
         CLASSLIST_BODY.toggle("theme--dark");
     }
 }
-
 
 // Triggers
 

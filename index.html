@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="./Img/logo.svg" type="image/x-icon">
 </head>
 <body class="theme" id="body">
-    <section class="expand-view"></section>
+    <div class="expand-view"></div>
     <header>
         <div class="blue-bar-top"></div>
         <nav>
@@ -55,13 +55,13 @@
                 <ul id="menu" class="menu">
                     <li class="theme-button">Modo Nocturno</li>
                     <li></li>
-                    <a href="./favs.html"><li>Favoritos</li></a>
+                    <a href="./Pages/favs.html"><li>Favoritos</li></a>
                     <li></li>
-                    <a href="./misgifos.html"><li>Mis GIFOS</li></a>
+                    <a href="./Pages/mis-gifos.html"><li>Mis GIFOS</li></a>
                     <li></li>
-                    <a href="./creator.html"><li class="new-gifos-button"><span>+</span></li></a>
+                    <a href="./Pages/creator.html"><li class="new-gifos-button"><span>+</span></li></a>
                     <li></li>
-                    <a href="./creator.html"><li class="creator">Crear GIFO</li></a>
+                    <a href="./Pages/creator.html"><li class="creator">Crear GIFO</li></a>
                     <li></li>
                 </ul>
             </div>
@@ -91,7 +91,7 @@
             </div>
             <div class="content-search-section">
                 <h2>Trending:</h2>
-                <p><span>Reactions</span>, <span>Entertainment</span>, <span>Sports</span>, <span>Stickers</span>, <span>Artists</span></p>
+                <p class="suggest-list"></p>
             </div>
         </section>
         <section class="new-search-section">
@@ -100,36 +100,7 @@
                 <h1 class="title-search-elements">text example</h1>
                 <img src="./Img/icon-busqueda-sin-resultado.svg" alt="" id="not-found-img">
                 <h2 id="not-found-title">Intenta con otra búsqueda.</h2>
-                <div class="content-elements">
-                    // Gifs Template
-                    <div class="gif-elements">
-                        <figure>
-                            <span class="icon-icon-fav-active"></span>
-                            <img src="./Img/a-tomar-por-saco-el-niño.gif" alt="">
-                            <div class="layer">
-                                <div class="icons-img">
-                                    <span class="icon-icon-fav">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="icon-icon-fav-active"></span>
-                                    </span>
-                                    <span class="icon-icon-download">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </span>
-                                    <span class="icon-icon-max-normal">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </span>
-                                </div>
-                                <div class="info-element">
-                                    <h5 class="username"></h5>
-                                    <h1 class="title-element"></h1>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
+                <div class="content-elements"></div>
                 <button class="more-btn">VER MÁS</button>
             </div>
         </section>
@@ -138,8 +109,21 @@
                 <h2>Trending GIFOS</h2>
                 <p>Mira los últimos GIFOS de nuestra comunidad.</p>
             </div>
-            <div class="trending-img">
-                <img src="./img/a-tomar-por-saco-el-niño.gif" alt="">
+            <div class="trends-gif-elements">
+                <div class="button-slider previous">
+                    <span>&#10094;</span>
+                </div>
+                <div class="trending-container">
+                    <div class="track">
+                        <div class="three-elements-container first"></div>
+                        <div class="three-elements-container second"></div>
+                        <div class="three-elements-container third"></div>
+                        <div class="three-elements-container fourth"></div>
+                    </div>
+                </div>
+                <div class="button-slider next">
+                    <span>&#10095;</span>
+                </div>
             </div>
         </section>
     </main>
@@ -163,5 +147,6 @@
     </footer>
     <script type="module" src="./Scripts/main.js"></script>
     <script type="module" src="./Scripts/search.js"></script>
+    <script type="module" src="./Scripts/trending.js"></script>
 </body>
 </html>

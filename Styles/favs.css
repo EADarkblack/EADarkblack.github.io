@@ -30,6 +30,173 @@
 /* Header y nav menu */
 body {
   background-color: var(--backgroundColor);
+  /*Expanded Gif style*/
+}
+
+body .expand-elements {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(var(--backgroundColor)), to(var(--backgroundColorGradient)));
+  background: linear-gradient(0deg, var(--backgroundColor) 0%, var(--backgroundColorGradient) 100%);
+  z-index: 3;
+  position: absolute;
+}
+
+body .expand-elements .close-icon {
+  margin-top: 4rem;
+  position: absolute;
+  right: 2.46rem;
+  cursor: pointer;
+}
+
+body .expand-elements .close-icon span {
+  display: block;
+  width: 0.94rem;
+  height: 0.125rem;
+  background-color: var(--mainColor);
+}
+
+body .expand-elements .close-icon span:nth-child(1) {
+  -webkit-transform: translateY(2px) rotate(45deg);
+          transform: translateY(2px) rotate(45deg);
+}
+
+body .expand-elements .close-icon span:nth-child(2) {
+  -webkit-transform: translateY(0px) rotate(-45deg);
+          transform: translateY(0px) rotate(-45deg);
+}
+
+body .expand-elements .expand-img {
+  margin: 9.75rem 1.75rem 0.88rem 1.75rem;
+}
+
+body .expand-elements .expand-img img {
+  max-height: 20rem;
+  width: 100%;
+}
+
+body .expand-elements .expand-info-elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0.38rem;
+}
+
+body .expand-elements .expand-info-elements .expand-info {
+  width: 50%;
+}
+
+body .expand-elements .expand-info-elements .expand-info h5 {
+  margin-left: 2.19rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+  color: var(--inputText);
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.13rem;
+}
+
+body .expand-elements .expand-info-elements .expand-info h1 {
+  margin: 0.38rem 0 0 1.84rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.19rem;
+  color: var(--inputText);
+}
+
+body .expand-elements .expand-info-elements .expand-icons {
+  margin-right: 1.81rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand {
+  font-size: 2.25rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  right: 3.5rem;
+  cursor: pointer;
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand .path1 {
+  opacity: 0;
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand .path2::before {
+  color: var(--mainColor);
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand .icon-icon-fav-active {
+  position: relative;
+  right: 1.85rem;
+  z-index: 4;
+  font-size: 1.4rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  opacity: 0;
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand .icon-icon-fav-active::before {
+  color: var(--mainColor);
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand:hover {
+  opacity: 1;
+}
+
+body .expand-elements .expand-info-elements .expand-icons .active-fav-expand {
+  opacity: 1;
+}
+
+body .expand-elements .expand-info-elements .expand-icons .active-fav-expand .icon-icon-fav-active {
+  opacity: 1;
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand-download {
+  margin-left: 1rem;
+  font-size: 2.25rem;
+  position: absolute;
+  right: 1.81rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand-download .path1 {
+  opacity: 0;
+  background-color: var(--backgroundColor);
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand-download .path2::before {
+  border: 1px solid var(--mainColor);
+  border-radius: 0.5rem;
+  color: var(--mainColor);
+}
+
+body .expand-elements .expand-info-elements .expand-icons .expand-download:hover {
+  opacity: 1;
 }
 
 body header .blue-bar-top {
@@ -42,10 +209,13 @@ body header nav {
   height: 5.938rem;
 }
 
+body header nav .logo {
+  margin: 1.81rem 0 1.08rem 1.38rem;
+}
+
 body header nav .logo .logo-svg {
   height: 3.05rem;
   width: 3.05rem;
-  margin: 1.81rem 0 1.08rem 1.38rem;
 }
 
 body header nav .logo .logo-svg #GIFOS {
@@ -113,6 +283,11 @@ body header nav .hamMenu .menu li:nth-child(2n) {
   width: 2.56rem;
   background-color: #ffffff;
   margin: 0;
+}
+
+body header nav .hamMenu .menu li:nth-child(2n):hover {
+  border-bottom: none;
+  cursor: unset;
 }
 
 body header nav .hamMenu .menu li {
@@ -185,7 +360,34 @@ body main {
 
 body main .fav-section {
   margin: 0.31rem 0 4.88rem 0;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .fav-section .title-fav-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .fav-section .title-fav-section img {
+  width: 1.75rem;
+  height: 1.31rem;
 }
 
 body main .fav-section .title-fav-section h1 {
@@ -195,6 +397,19 @@ body main .fav-section .title-fav-section h1 {
   font-size: 1.25rem;
   letter-spacing: 0;
   line-height: 1.88rem;
+}
+
+body main .fav-section .no-content-fav-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 body main .fav-section .no-content-fav-section img {
@@ -208,6 +423,203 @@ body main .fav-section .no-content-fav-section h2 {
   letter-spacing: 0;
   line-height: 1.56rem;
   margin: 0 2rem 0 2rem;
+}
+
+body main .fav-section .content-elements {
+  margin: 2.88rem 1.31rem 4.88rem 1.31rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-column-gap: 1.31rem;
+          column-gap: 1.31rem;
+  row-gap: 1.56rem;
+}
+
+body main .fav-section .content-elements .gif-elements figure {
+  position: relative;
+  height: 7.5rem;
+  width: 100%;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .fav-section .content-elements .gif-elements figure img {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 500ms ease-out;
+  transition: all 500ms ease-out;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #572ee5e6;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  opacity: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img {
+  margin: 0.63rem 0.63rem 0 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2rem 2rem 2rem;
+      grid-template-columns: 2rem 2rem 2rem;
+  -ms-grid-rows: 2rem;
+      grid-template-rows: 2rem;
+  -webkit-column-gap: 0.69rem;
+          column-gap: 0.69rem;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .icon-icon-fav {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 1.3rem;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .icon-icon-fav .icon-icon-fav-active {
+  position: relative;
+  left: 1.61rem;
+  z-index: 1;
+  font-size: 1.13rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  opacity: 0;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .active-fav {
+  opacity: 1;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .active-fav .icon-icon-fav-active {
+  opacity: 1;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .icon-icon-download {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .icon-icon-max-normal {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .icon-icon-fav:hover {
+  opacity: 1;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .icon-icon-download:hover {
+  opacity: 1;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .icons-img .icon-icon-max-normal:hover {
+  opacity: 1;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .info-element {
+  margin: 0 0 0.38rem 0.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .info-element h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+  color: #ffffff;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.13rem;
+  margin-bottom: 0.31rem;
+  text-align: left;
+}
+
+body main .fav-section .content-elements .gif-elements figure .layer .info-element h1 {
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.19rem;
+  text-align: left;
+}
+
+body main .fav-section .content-elements .gif-elements figure:hover > .layer {
+  opacity: 0;
+}
+
+body main .fav-section .more-btn {
+  display: none;
+  height: 3.13rem;
+  width: 7.94rem;
+  border: 1px solid var(--mainColor);
+  border-radius: 1.688rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: var(--mainColor);
+  font-size: 0.81rem;
+  letter-spacing: 0;
+  line-height: 1rem;
+  background-color: var(--backgroundColor);
+  outline: none;
+  cursor: pointer;
+}
+
+body main .fav-section .more-btn:hover {
+  background-color: var(--mainColor);
+  color: var(--backgroundColor);
 }
 
 body main .trending-section {
@@ -238,13 +650,229 @@ body main .trending-section .trending-section-content p {
   color: var(--inputText);
 }
 
-body main .trending-section .trending-img {
+body main .trending-section .trends-gif-elements {
   padding-bottom: 5.13rem;
+  margin: 0 1.38rem;
 }
 
-body main .trending-section .trending-img img {
+body main .trending-section .trends-gif-elements .button-slider {
+  border: 1px solid var(--mainColor);
+  height: 2.5rem;
+  width: 2.5rem;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+body main .trending-section .trends-gif-elements .button-slider span {
+  color: var(--mainColor);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+body main .trending-section .trends-gif-elements .button-slider:hover {
+  background-color: var(--mainColor);
+}
+
+body main .trending-section .trends-gif-elements .button-slider:hover span {
+  color: var(--backgroundColor);
+}
+
+body main .trending-section .trends-gif-elements .trending-container {
+  width: 100%;
   height: 11.69rem;
-  width: 15.19rem;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container {
+  height: 100%;
+  width: 1200%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -ms-touch-action: none;
+      touch-action: none;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings {
+  width: 8.33%;
+  margin-right: 1.38rem;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure img {
+  width: 100%;
+  height: 100%;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #572ee5e6;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img {
+  margin: 0.63rem 0.63rem 0 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2rem 2rem 2rem;
+      grid-template-columns: 2rem 2rem 2rem;
+  -ms-grid-rows: 2rem;
+      grid-template-rows: 2rem;
+  -webkit-column-gap: 0.69rem;
+          column-gap: 0.69rem;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-fav {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 1.3rem;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-fav .icon-icon-fav-active {
+  position: relative;
+  left: 1.61rem;
+  z-index: 1;
+  font-size: 1.13rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  opacity: 0;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .active-fav {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .active-fav .icon-icon-fav-active {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-download {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-max-normal {
+  font-size: 2rem;
+  opacity: 0.7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-fav:hover {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-download:hover {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .icons-img .icon-icon-max-normal:hover {
+  opacity: 1;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .info-element {
+  margin: 0 0 0.38rem 0.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .info-element h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+  color: #ffffff;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.13rem;
+  margin-bottom: 0.31rem;
+  text-align: left;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure .layer .info-element h1 {
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.19rem;
+  text-align: left;
+}
+
+body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure:hover > .layer {
+  opacity: 0;
 }
 
 body footer {
@@ -292,13 +920,57 @@ body footer .blue-bar-bot {
 @media screen and (min-width: 1220px) {
   /* Desktop header */
   body {
+    /*Expanded gif Desktop*/
     /* Desktop Footer */
+  }
+  body .expand-elements {
+    top: 0;
+  }
+  body .expand-elements .close-icon {
+    margin-top: 4.15rem;
+    right: 17.4rem;
+  }
+  body .expand-elements .close-icon span {
+    width: 0.95rem;
+  }
+  body .expand-elements .expand-img {
+    margin: 10rem 24.38rem 1.69rem 22.19rem;
+  }
+  body .expand-elements .expand-img img {
+    max-height: 40rem;
+  }
+  body .expand-elements .expand-info-elements {
+    margin-top: 0;
+    margin-left: 22.19rem;
+  }
+  body .expand-elements .expand-info-elements .expand-info h5 {
+    margin-left: 0;
+  }
+  body .expand-elements .expand-info-elements .expand-info h1 {
+    margin: 0.38rem 0 0 0;
+  }
+  body .expand-elements .expand-info-elements .expand-icons {
+    margin-right: 0;
+  }
+  body .expand-elements .expand-info-elements .expand-icons .expand {
+    right: 28.19rem;
+    border: 1px solid var(--mainColor);
+    border-radius: 0.5rem;
+  }
+  body .expand-elements .expand-info-elements .expand-icons .expand .icon-icon-fav-active {
+    position: absolute;
+    left: 0.35rem;
+  }
+  body .expand-elements .expand-info-elements .expand-icons .expand-download {
+    margin-left: 0;
+    right: 24.63rem;
   }
   body header {
     position: fixed;
     top: 0rem;
     width: 100%;
     background-color: var(--backgroundColor);
+    z-index: 1;
   }
   body header nav {
     height: 5.63rem;
@@ -309,10 +981,12 @@ body footer .blue-bar-bot {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  body header nav .logo svg {
+  body header nav .logo {
+    margin: 1.13rem 0 0.81rem 9.75rem;
+  }
+  body header nav .logo .logo-svg {
     height: 3.69rem;
     width: 3.69rem;
-    margin: 1.13rem 0 0.81rem 9.75rem;
   }
   body header nav .hamMenu .burguer-icon span {
     display: none;
@@ -378,6 +1052,22 @@ body footer .blue-bar-bot {
     line-height: 1.56rem;
     margin: 0 2rem 0 2rem;
   }
+  body main .fav-section .content-elements {
+    margin: 3.69rem 9.81rem 4.88rem 9.81rem;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    -webkit-column-gap: 1.81rem;
+            column-gap: 1.81rem;
+    row-gap: 1.75rem;
+  }
+  body main .fav-section .content-elements .gif-elements figure {
+    height: 12.5rem;
+  }
+  body main .fav-section .content-elements .gif-elements figure:hover > .layer {
+    opacity: 1;
+  }
   body main .trending-section .trending-section-content {
     padding-top: 4.19rem;
   }
@@ -390,13 +1080,75 @@ body footer .blue-bar-bot {
     line-height: 1.31rem;
     margin: 0 0 3.31rem 0;
   }
-  body main .trending-section .trending-img {
+  body main .trending-section .trends-gif-elements {
     padding-bottom: 11.38rem;
-    text-align: center;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2.5rem 1fr 2.5rem;
+        grid-template-columns: 2.5rem 1fr 2.5rem;
+    -webkit-column-gap: 1.38rem;
+            column-gap: 1.38rem;
+    margin: 0 5.88rem;
   }
-  body main .trending-section .trending-img img {
+  body main .trending-section .trends-gif-elements .button-slider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body main .trending-section .trends-gif-elements .trending-container {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    overflow: hidden;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    width: 400%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    overflow: initial;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 25%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    -webkit-transition: unset;
+    transition: unset;
+    -ms-touch-action: unset;
+        touch-action: unset;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
     height: 17.19rem;
-    width: 22.31rem;
+    width: 100%;
+    margin-right: 0;
+    padding-right: 1.81rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure:hover > .layer {
+    opacity: 1;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings:nth-last-child(1) {
+    padding-right: 0;
   }
   body footer {
     text-align: unset;
@@ -442,7 +1194,50 @@ body footer .blue-bar-bot {
 @media screen and (min-width: 768px) and (max-width: 1219px) {
   /* Tablet header */
   body {
+    /*Expanded gif Tablet*/
     /* Tablet Footer */
+  }
+  body .expand-elements {
+    margin-bottom: 2rem;
+  }
+  body .expand-elements .close-icon {
+    margin-top: 4rem;
+    right: 4rem;
+  }
+  body .expand-elements .close-icon span {
+    width: 0.95rem;
+  }
+  body .expand-elements .expand-img {
+    margin: 7rem 4rem 0.88rem 4rem;
+  }
+  body .expand-elements .expand-img img {
+    max-height: 27rem;
+  }
+  body .expand-elements .expand-info-elements {
+    margin-top: 0;
+    margin-left: 4rem;
+  }
+  body .expand-elements .expand-info-elements .expand-info h5 {
+    margin-left: 0;
+  }
+  body .expand-elements .expand-info-elements .expand-info h1 {
+    margin: 0.38rem 0 0 0;
+  }
+  body .expand-elements .expand-info-elements .expand-icons {
+    margin-right: 0;
+  }
+  body .expand-elements .expand-info-elements .expand-icons .expand {
+    right: 7.5rem;
+    border: 1px solid var(--mainColor);
+    border-radius: 0.5rem;
+  }
+  body .expand-elements .expand-info-elements .expand-icons .expand .icon-icon-fav-active {
+    position: absolute;
+    left: 0.35rem;
+  }
+  body .expand-elements .expand-info-elements .expand-icons .expand-download {
+    margin-left: 0;
+    right: 4rem;
   }
   body header nav {
     height: 5.63rem;
@@ -453,10 +1248,12 @@ body footer .blue-bar-bot {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  body header nav .logo svg {
+  body header nav .logo {
+    margin: 1.13rem 0 0.81rem 3rem;
+  }
+  body header nav .logo .logo-svg {
     height: 3.69rem;
     width: 3.69rem;
-    margin: 1.13rem 0 0.81rem 3rem;
   }
   body header nav .hamMenu .burguer-icon span {
     display: none;
@@ -499,7 +1296,47 @@ body footer .blue-bar-bot {
     display: none;
   }
   body main {
+    /* Tablet Fav section */
     /* Tablet Trending Section */
+  }
+  body main .fav-section {
+    margin: 6.63rem 0 4.88rem 0;
+    text-align: center;
+  }
+  body main .fav-section .title-fav-section h1 {
+    margin-top: 0.44rem;
+    font-family: "Montserrat", sans-serif;
+    color: var(--mainColor);
+    font-size: 1.25rem;
+    letter-spacing: 0;
+    line-height: 1.88rem;
+  }
+  body main .fav-section .no-content-fav-section img {
+    margin: 6.83rem 0 1.48rem 0;
+  }
+  body main .fav-section .no-content-fav-section h2 {
+    font-family: "Montserrat", sans-serif;
+    color: var(--textSectionColor);
+    font-size: 1.38rem;
+    letter-spacing: 0;
+    line-height: 1.56rem;
+    margin: 0 2rem 0 2rem;
+  }
+  body main .fav-section .content-elements {
+    margin: 3.69rem 4rem 4.88rem 4rem;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    -webkit-column-gap: 1.81rem;
+            column-gap: 1.81rem;
+    row-gap: 1.75rem;
+  }
+  body main .fav-section .content-elements .gif-elements figure {
+    height: 12.5rem;
+  }
+  body main .fav-section .content-elements .gif-elements figure:hover > .layer {
+    opacity: 1;
   }
   body main .trending-section .trending-section-content {
     padding-top: 4.19rem;
@@ -513,13 +1350,74 @@ body footer .blue-bar-bot {
     line-height: 1.31rem;
     margin: 0 0 3.31rem 0;
   }
-  body main .trending-section .trending-img {
-    padding-bottom: 11.38rem;
-    text-align: center;
+  body main .trending-section .trends-gif-elements {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2.5rem 1fr 2.5rem;
+        grid-template-columns: 2.5rem 1fr 2.5rem;
+    -webkit-column-gap: 1.38rem;
+            column-gap: 1.38rem;
+    margin: 0 3rem;
   }
-  body main .trending-section .trending-img img {
-    height: 17.19rem;
-    width: 22.31rem;
+  body main .trending-section .trends-gif-elements .button-slider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body main .trending-section .trends-gif-elements .trending-container {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    overflow: hidden;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    width: 400%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    overflow: initial;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 25%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    -webkit-transition: unset;
+    transition: unset;
+    -ms-touch-action: unset;
+        touch-action: unset;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    height: 14rem;
+    width: 100%;
+    margin-right: 0;
+    padding-right: 1rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings figure:hover > .layer {
+    opacity: 1;
+  }
+  body main .trending-section .trends-gif-elements .trending-container .track .three-elements-container .gif-trendings:nth-last-child(1) {
+    padding-right: 0;
   }
   body footer {
     text-align: unset;
