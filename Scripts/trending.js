@@ -1,5 +1,6 @@
 import api from './../Services/services.js'
-import {windowWidth, expandGif, addBtnIconFav, dataFavIconToggle, addDownloadBtn, addExpandBtn} from './search.js'
+import {windowWidth, expandGif, dataFavIconToggle, addDownloadBtn, downloadFunction, addExpandBtn} from './search.js'
+import {deleteFavElement} from './favorite.js'
 
 // Variables
 
@@ -11,6 +12,7 @@ const containerGif2 = document.querySelector(".second");
 const containerGif3 = document.querySelector(".third");
 const containerGif4 = document.querySelector(".fourth");
 const trendingContainer = document.querySelector(".trending-container");
+const favContainer = document.querySelector(".fav");
 let direction = -1;
 let initialPosition = null;
 let moving = false;
@@ -53,12 +55,12 @@ const showTrendsData = function(data) {
                     <img src="${data[i].images.downsized_medium.url}" alt="" class="trend-img">
                     <div class="layer">
                         <div class="icons-img">
-                            <span class="icon-icon-fav" id="${data[i].id}">
+                            <span class="icon-icon-fav trend" id="${data[i].id}">
                                 <span class="icon-icon-fav-active"></span>
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-download" id="dow-${data[i].id}">
+                            <span class="icon-icon-download trend-dow" id="dow-${data[i].id}">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
@@ -83,12 +85,12 @@ const showTrendsData = function(data) {
                 <img src="${data[i].images.downsized_medium.url}" alt="" class="trend-img">
                 <div class="layer">
                     <div class="icons-img">
-                        <span class="icon-icon-fav" id="${data[i].id}">
+                        <span class="icon-icon-fav trend" id="${data[i].id}">
                             <span class="icon-icon-fav-active"></span>
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
-                        <span class="icon-icon-download" id="dow-${data[i].id}">
+                        <span class="icon-icon-download trend-dow" id="dow-${data[i].id}">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
@@ -113,12 +115,12 @@ const showTrendsData = function(data) {
                 <img src="${data[i].images.downsized_medium.url}" alt="" class="trend-img">
                 <div class="layer">
                     <div class="icons-img">
-                        <span class="icon-icon-fav" id="${data[i].id}">
+                        <span class="icon-icon-fav trend" id="${data[i].id}">
                             <span class="icon-icon-fav-active"></span>
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
-                        <span class="icon-icon-download" id="dow-${data[i].id}">
+                        <span class="icon-icon-download trend-dow" id="dow-${data[i].id}">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
@@ -143,12 +145,12 @@ const showTrendsData = function(data) {
                 <img src="${data[i].images.downsized_medium.url}" alt="" class="trend-img">
                 <div class="layer">
                     <div class="icons-img">
-                        <span class="icon-icon-fav" id="${data[i].id}">
+                        <span class="icon-icon-fav trend" id="${data[i].id}">
                             <span class="icon-icon-fav-active"></span>
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
-                        <span class="icon-icon-download" id="dow-${data[i].id}">
+                        <span class="icon-icon-download trend-dow" id="dow-${data[i].id}">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
@@ -166,10 +168,10 @@ const showTrendsData = function(data) {
         </div>
         `
     }
-    trackEventStop();
-    addBtnIconFav();
-    addDownloadBtn();
+    addFavBtnOnlyTrends();
+    addDownloadBtnOnlyTrends();
     addExpandBtn();
+    trackEventStop();
 }
 
 /**
@@ -311,6 +313,111 @@ const addExpandTrendMobile = function() {
                 expandGif(data);
             });
         });
+    }
+}
+
+/**
+ *  Adds functionality to the favorite button for every trend element to avoid the double execution
+ */
+
+const addFavBtnOnlyTrends = function() {
+    const allTrendElements = document.querySelectorAll(".gif-trendings");
+    for (let i = 0; i < allTrendElements.length; i++) {
+        const trendIconContent = document.querySelectorAll(".trend");
+        const idTrend = trendIconContent[i].id;
+        trendIconContent[i].addEventListener("click", () => {
+            api.addFavorite(idTrend);
+            api.apiGetFavoriteId(idTrend)
+            .then(res => {
+                const {data} = res;
+                markupTrendToFav(data);
+                dataFavIconToggle();
+            })
+        })
+    }
+}
+
+/**
+ * Adds functionality to the download button for every trend element to avoid the double execution
+ */
+
+const addDownloadBtnOnlyTrends = function() {
+    const downloadBtnTrend = document.querySelectorAll(".trend-dow");
+    for (let i = 0; i < downloadBtnTrend.length; i++) {
+        const downloadIdBtnTrend = downloadBtnTrend[i].id;
+        const idTrendDown = downloadIdBtnTrend.replace("dow-", "");
+        api.apiGetFavoriteId(idTrendDown)
+        .then(res => {
+            const {data} = res;
+            downloadBtnTrend[i].addEventListener("click", () => {
+                downloadFunction(data);
+            });
+        });
+    };
+}
+
+/**
+ * Prints the trend element liked by the user on the favorite section container and reload the page when the user adds more than 12 trend elements
+ */
+
+const markupTrendToFav = function(data) {
+    if (favContainer) {
+        const allGifFavElements = document.querySelectorAll(".gif-elements");
+        const newFavElement = `
+                <div class="gif-elements" id="el-${data.id}">
+                <figure>
+                    <img src="${data.images.downsized_medium.url}" alt="">
+                    <div class="layer">
+                        <div class="icons-img">
+                            <span class="icon-icon-fav" id="${data.id}">
+                                <span class="icon-icon-fav-active"></span>
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </span>
+                            <span class="icon-icon-download" id="dow-${data.id}">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </span>
+                            <span class="icon-icon-max-normal" id="exp-${data.id}">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </span>
+                        </div>
+                        <div class="info-element">
+                            <h5 class="username">${data.username}</h5>
+                            <h1 class="title-element">${data.title}</h1>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        `
+        const noContentElements = document.querySelector(".no-content-fav-section");
+        noContentElements.style.display = "none";
+        favContainer.style.display = "grid";
+        favContainer.insertAdjacentHTML("beforeend", newFavElement);
+        if (windowWidth >= 768) {
+            deleteFavElement();
+            addDownloadBtn();
+            addExpandBtn();
+        } else {
+            expandEventGifElement();
+        }
+        deleteSameFavElement(allGifFavElements, data);
+        if (allGifFavElements.length == 12) {
+            location.reload();
+        }
+    }
+}
+
+/**
+ * Deletes the copy of the trend element when the user adds to favorite a gif already saved on the favorite container
+ */
+
+const deleteSameFavElement = function(allGifFavElements, data) {
+    for (let i = 0; i < allGifFavElements.length; i++) {
+        if (allGifFavElements[i].id.replace("el-", "") === data.id) {
+            favContainer.removeChild(allGifFavElements[i]);
+        }
     }
 }
 

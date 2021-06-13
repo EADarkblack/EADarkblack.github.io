@@ -8,6 +8,10 @@
   --inputText: #000000;
   --textSectionColor: #50e3c2;
   --backgroundColorGradient: #ffffffe6;
+  --camera: url(../Img/camara.svg);
+  --reel-small: url(../Img/element_cinta1.svg);
+  --reel-medium: url(../Img/element_cinta2.svg);
+  --reel: url(../Img/pelicula.svg);
 }
 
 .theme--dark {
@@ -19,6 +23,10 @@
   --inputText: #ffffff;
   --textSectionColor: #ffffff;
   --backgroundColorGradient: #37383ce6;
+  --camera: url(../Img/camara-modo-noc.svg);
+  --reel-small: url(../Img/element_cinta1-modo-noc.svg);
+  --reel-medium: url(../Img/element_cinta2-modo-noc.svg);
+  --reel: url(../Img/pelicula-modo-noc.svg);
 }
 
 * {
@@ -43,10 +51,13 @@ body header nav {
   height: 5.938rem;
 }
 
+body header nav .logo {
+  margin: 1.81rem 0 1.08rem 1.38rem;
+}
+
 body header nav .logo .logo-svg {
   height: 3.05rem;
   width: 3.05rem;
-  margin: 1.81rem 0 1.08rem 1.38rem;
 }
 
 body header nav .logo .logo-svg #GIFOS {
@@ -267,6 +278,68 @@ body main .creator-section .creator-elements .camera-area .content-camera-area h
   line-height: 1.81rem;
 }
 
+body main .creator-section .creator-elements .camera-area .content-camera-area .get-video {
+  width: 93%;
+  height: 21.7rem;
+  position: absolute;
+  right: 0.15rem;
+  bottom: -8.27rem;
+  margin: 0 1.25rem;
+  -webkit-transform: scaleX(1.4);
+          transform: scaleX(1.4);
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container {
+  display: none;
+  position: absolute;
+  width: 94%;
+  height: 21.7rem;
+  bottom: -8.27rem;
+  margin: 0 1.25rem;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-result {
+  width: 100%;
+  height: 100%;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #572ee5e6;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer img {
+  height: 1.38rem;
+  width: 1.38rem;
+  margin-bottom: 0.63rem;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.19rem;
+}
+
 body main .creator-section .creator-elements .steps-elements {
   margin-top: 1.5rem;
   display: -webkit-box;
@@ -279,6 +352,7 @@ body main .creator-section .creator-elements .steps-elements {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 body main .creator-section .creator-elements .steps-elements .steps-numbers {
@@ -315,6 +389,45 @@ body main .creator-section .creator-elements .steps-elements .steps-numbers .ste
           justify-content: center;
 }
 
+body main .creator-section .creator-elements .steps-elements .steps-numbers .step-active {
+  background-color: var(--mainColor);
+  color: var(--backgroundColor);
+}
+
+body main .creator-section .creator-elements .steps-elements .timer {
+  display: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: var(--mainColor);
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.38rem;
+  margin-top: 1.81rem;
+  position: absolute;
+  bottom: 6.45rem;
+  right: 3.3rem;
+}
+
+body main .creator-section .creator-elements .steps-elements .timer-text {
+  display: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: var(--mainColor);
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.38rem;
+  margin-top: 1.81rem;
+  position: absolute;
+  bottom: 6.45rem;
+  right: 3.3rem;
+  z-index: 1;
+  cursor: pointer;
+}
+
+body main .creator-section .creator-elements .steps-elements .timer-text:hover {
+  border-bottom: 2px solid #50e3c2;
+}
+
 body main .creator-section .creator-elements .steps-elements .creator-bar {
   display: none;
   height: 0.43rem;
@@ -323,11 +436,11 @@ body main .creator-section .creator-elements .steps-elements .creator-bar {
   border-radius: 1rem;
 }
 
-body main .creator-section .creator-elements .steps-elements .start-button {
+body main .creator-section .creator-elements .steps-elements .buttons {
   margin-top: 1.26rem;
 }
 
-body main .creator-section .creator-elements .steps-elements .start-button button {
+body main .creator-section .creator-elements .steps-elements .buttons .btn {
   height: 3.13rem;
   width: 7.94rem;
   border: 1px solid var(--mainColor);
@@ -340,9 +453,22 @@ body main .creator-section .creator-elements .steps-elements .start-button butto
   line-height: 1rem;
   background-color: var(--backgroundColor);
   outline: none;
+  cursor: pointer;
 }
 
-body main .creator-section .creator-elements .steps-elements .start-button button:hover {
+body main .creator-section .creator-elements .steps-elements .buttons .record {
+  display: none;
+}
+
+body main .creator-section .creator-elements .steps-elements .buttons .stop-record {
+  display: none;
+}
+
+body main .creator-section .creator-elements .steps-elements .buttons .upload {
+  display: none;
+}
+
+body main .creator-section .creator-elements .steps-elements .buttons .btn:hover {
   background-color: var(--mainColor);
   color: var(--backgroundColor);
 }
@@ -364,17 +490,47 @@ body main .creator-section .img {
 
 body main .creator-section .img .camera-img {
   margin-left: 4rem;
+  background-image: var(--camera);
+  height: 10rem;
+  width: 7.71rem;
 }
 
-body main .creator-section .img .camera-img .light {
-  position: relative;
-  bottom: 1rem;
-  right: 0.1rem;
-  opacity: 30%;
+body main .creator-section .img .reel-small {
+  background-image: var(--reel-small);
+  height: 4.65rem;
+  width: 4.5rem;
+  position: absolute;
+  left: 3.2rem;
+  top: 0.4rem;
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+body main .creator-section .img .reel-medium {
+  background-image: var(--reel-medium);
+  height: 6.2rem;
+  width: 6.2rem;
+  position: absolute;
+  left: 6rem;
+  bottom: 17rem;
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+body main .creator-section .img .camera-light {
+  background-image: url(../Img/element-luz-camara.svg);
+  height: 8.5rem;
+  width: 4rem;
+  position: absolute;
+  left: 11.8rem;
+  top: 1.2rem;
 }
 
 body main .creator-section .img .reel {
   margin-right: 4rem;
+  background-image: var(--reel);
+  height: 5.5rem;
+  width: 8rem;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -435,10 +591,12 @@ body footer .blue-bar-bot {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  body header nav .logo svg {
+  body header nav .logo {
+    margin: 1.13rem 0 0.81rem 9.75rem;
+  }
+  body header nav .logo .logo-svg {
     height: 3.69rem;
     width: 3.69rem;
-    margin: 1.13rem 0 0.81rem 9.75rem;
   }
   body header nav .hamMenu .burguer-icon span {
     display: none;
@@ -574,10 +732,12 @@ body footer .blue-bar-bot {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  body header nav .logo svg {
+  body header nav .logo {
+    margin: 1.13rem 0 0.81rem 3rem;
+  }
+  body header nav .logo .logo-svg {
     height: 3.69rem;
     width: 3.69rem;
-    margin: 1.13rem 0 0.81rem 3rem;
   }
   body header nav .hamMenu .burguer-icon span {
     display: none;

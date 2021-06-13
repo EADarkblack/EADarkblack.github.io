@@ -1,23 +1,42 @@
 import api from './../Services/services.js'
-import {showMoreBtn, containerResults, windowWidth, expandEventGifElement, addBtnIconFav, addDownloadBtn, addExpandBtn, dataFavIconToggle} from './search.js'
+import {showMoreBtn, containerResults, windowWidth, expandEventGifElement, addDownloadBtn, addExpandBtn, dataFavIconToggle} from './search.js'
 
 // Global Variables
 
 const noFavElements = document.querySelector(".no-content-fav-section");
-let totalGif = 0;
+const favsContainer = document.querySelector(".fav");
+let totalGifArr = [];
+let totalFavGif = 0;
 
 // Functions
+
+/**
+ * Executes the getFavElements function only when the user is located in the favorite section
+ */
+
+const functionExecute = function(btnState = false) {
+    if (favsContainer) {
+        getFavElements(btnState);
+        showMoreBtn.addEventListener("click", () => functionExecute(true));
+    }
+}
 
 /**
  * Gets from the localstorage the gifs liked by the user using an array with a 12 limit
  */
 
-const getFavElements = function() {
-    const offset = totalGif || 0;
+const getFavElements = function(btnState) {
+    if (!btnState) {
+        setTotalFav(0);
+        totalGifArr = [];
+    }
+    const offset = totalFavGif || 0;
+    const totalFavElements = api.getFavElementsLS() || [];
     const favElements = api.getLimitFavElements(12, offset);
-    if (favElements.length !== 0) {
+    if (totalFavElements.length !== 0) {
         noFavElements.style.display = "none";
         markupFavElements(favElements);
+        showMoreBtnFav(totalFavElements);
         dataFavIconToggle();
     } else {
         noFavElements.style.display = "flex";
@@ -30,8 +49,8 @@ const getFavElements = function() {
  */
 
 const markupFavElements = function(favElements) {
-    showMoreBtnFav(favElements);
     for (let i = 0; i < favElements.length; i++) {
+        totalGifArr.push(favElements[i]);
         containerResults.innerHTML += `
                 <div class="gif-elements" id="el-${favElements[i].id}">
                 <figure>
@@ -61,12 +80,13 @@ const markupFavElements = function(favElements) {
             </div>
         `
     }
-    if (windowWidth < 768) {
-        expandEventGifElement();
-    } else {
-        addBtnIconFav();
+    setTotalFav(document.querySelectorAll(".gif-elements").length);
+    if (windowWidth >= 768) {
+        deleteFavElement();
         addDownloadBtn();
         addExpandBtn();
+    } else {
+        expandEventGifElement();
     }
 }
 
@@ -74,19 +94,63 @@ const markupFavElements = function(favElements) {
  * Allows show the button "Ver más" when exists more than 12 gifs and adds a new number for the offset
  */
 
-const showMoreBtnFav = function(favElements) {
-    if (favElements.length < 12) {
-        showMoreBtn.style.display = "none";
-    } else {
+const showMoreBtnFav = function(totalFavElements) {
+    if (totalFavGif < totalFavElements.length) {
         showMoreBtn.style.display = "block";
-        totalGif += 12;
+    } else {
+        showMoreBtn.style.display = "none";
+    }
+} 
+
+/**
+ * Sets a new number for the offset
+ */
+
+const setTotalFav = function(totalGif){
+    totalFavGif = totalGif;
+}
+
+/**
+ * Removes the gif from the favorite container when the user click the favorite button
+ */
+
+export const deleteFavElement = function() {
+    const allElements = document.querySelectorAll(".gif-elements");
+    for (let i = 0; i < allElements.length; i++) {
+        const favIconContent = document.querySelectorAll(".icon-icon-fav");
+        const id = favIconContent[i].id;
+        favIconContent[i].addEventListener("click", () => {
+            api.addFavorite(id);
+            getUpdateLocalStorage();
+            deleteElement(allElements[i]);
+        });
     }
 }
 
-// Listeners
+/**
+ * Adds the "no content" message when the user deletes all favorite elements from the favorite container
+ */
 
-showMoreBtn.addEventListener("click", getFavElements);
+const getUpdateLocalStorage = function() {
+    const totalFavElements = api.getFavElementsLS() || [];
+    if (totalFavElements.length > 1) {
+        noFavElements.style.display = "none";
+    } else {
+        noFavElements.style.display = "flex";
+        containerResults.style.display = "none";
+    }
+}
+
+/**
+ * Deletes the element after 200 ms to allow delete first the element from the localstorage
+ */
+
+const deleteElement = function(allElements) {
+    setTimeout(() => {
+        favsContainer.removeChild(allElements);
+    }, 200)
+}
 
 // Triggers
 
-getFavElements();
+functionExecute();

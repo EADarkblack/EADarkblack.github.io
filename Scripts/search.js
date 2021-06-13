@@ -16,6 +16,7 @@ const inputIcon = document.querySelector(".input-icon");
 let titleSearch = document.querySelector(".title-search-elements");
 let totalResults = 0;
 export let windowWidth = window.innerWidth;
+let validate = true;
 
 // Functions
 
@@ -200,13 +201,17 @@ const resetInputSearch = function() {
  * Sets the favorite button for all searched gifs
  */
 
-export const addBtnIconFav = function() {
-    const content = document.querySelectorAll(".icon-icon-fav");
-    for (let i = 0; i < content.length; i++) {
-        content[i].addEventListener("click", () => {
-            api.addFavorite(content[i].id);
-        });
-    };
+const addBtnIconFav = function() {
+    if (validate) {
+        validate = false;
+        const content = document.querySelectorAll(".icon-icon-fav");
+        for (let i = 0; i < content.length; i++) {
+            content[i].addEventListener("click", () => {
+                api.addFavorite(content[i].id)
+            });
+        };
+    }
+    validate = true;
 }
 
 /**
@@ -296,16 +301,19 @@ export const expandGif = function(data) {
 }
 
 /**
- * Adds the event to the X button when the gif is in fullscreen mode
+ * Adds the event to the X button when the gif is in fullscreen mode and reload the page when the user close a gif on the favorite section
  */
 
 const closeExpandView = function() {
     const close = document.querySelector(".close-icon");
     close.addEventListener("click", () => {
         const expandContainer = document.querySelector(".expand-view");
-        window.scroll(0, 650);
         document.body.style.overflow = "initial";
         expandContainer.innerHTML = ``;
+        const favContainer = document.querySelector(".fav");
+        if (favContainer) {
+            location.reload();
+        }
     })
 }
 
@@ -324,7 +332,7 @@ const addFavExpand = function(data) {
  * Transform the gif into a local object and creates its respective download url
  */
 
-const downloadFunction = function(data) {
+export const downloadFunction = function(data) {
     async function createUrlGif () {
         let a = document.createElement("a");
         let response = await fetch(`${data.images.original.url}`);
@@ -341,7 +349,7 @@ const downloadFunction = function(data) {
  *  Adds functionality to the download button no fullscreen mode
  */
 
- export const addDownloadBtn = function() {
+export const addDownloadBtn = function() {
     const downloadBtn = document.querySelectorAll(".icon-icon-download");
     for (let i = 0; i < downloadBtn.length; i++) {
         const downloadIdBtn = downloadBtn[i].id;

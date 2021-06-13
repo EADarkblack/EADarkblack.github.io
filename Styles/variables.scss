@@ -31,6 +31,22 @@ $hamMenuBgColorDM: #000000e6;
 $inputTextDM: #ffffff;
 $textSectionColorDM: #ffffff;
 
+// Images
+
+// Normal Images
+
+$camera: url(../Img/camara.svg);
+$reel-small: url(../Img/element_cinta1.svg);
+$reel-medium: url(../Img/element_cinta2.svg);
+$reel: url(../Img/pelicula.svg);
+$camera-light: url(../Img/element-luz-camara.svg);
+
+// Dark Mode Images
+
+$cameraDM: url(../Img/camara-modo-noc.svg);
+$reel-smallDM: url(../Img/element_cinta1-modo-noc.svg);
+$reel-mediumDM: url(../Img/element_cinta2-modo-noc.svg);
+$reelDM: url(../Img/pelicula-modo-noc.svg);
 
 // Bright Theme and Dark Theme
 
@@ -44,6 +60,13 @@ $textSectionColorDM: #ffffff;
     --textSectionColor: #{$textSectionColor};
     --backgroundColorGradient: #{$backgroundColorGradient};
 
+    // Images
+
+    --camera: #{$camera};
+    --reel-small: #{$reel-small};
+    --reel-medium: #{$reel-medium};
+    --reel: #{$reel};
+
     &--dark{
         --backgroundColor: #{$backgroundColorDM};
         --sectionBackgroundColor: #{$sectionBackgroundColorDM};
@@ -53,5 +76,12 @@ $textSectionColorDM: #ffffff;
         --inputText: #{$inputTextDM};
         --textSectionColor: #{$textSectionColorDM};
         --backgroundColorGradient: #{$backgroundColorGradientDM};
+        
+        // Images Dark Mode
+
+        --camera: #{$cameraDM};
+        --reel-small: #{$reel-smallDM};
+        --reel-medium: #{$reel-mediumDM};
+        --reel: #{$reelDM};
     }
 }

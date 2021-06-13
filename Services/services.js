@@ -62,6 +62,10 @@ export default {
         })
     },
 
+    /**
+     * Returns the newest trends elements
+     */
+
     apiGetTrendings() {
         return new Promise((resolve, reject) => {
             fetch(`${TRENDING_EP}?api_key=${APIKEY}&limit=12`)
@@ -136,7 +140,7 @@ export default {
     },
 
     /**
-     * 
+     * Returns an array with the 12 elements and adds an offset for show more gifs
      */
 
     getLimitFavElements(limit = 12, offset = 0) {
@@ -146,7 +150,6 @@ export default {
         } else {
             return [];
         }
-
     }
 }
 

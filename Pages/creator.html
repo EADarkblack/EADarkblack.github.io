@@ -7,6 +7,9 @@
     <title>GIFOS</title>
     <link rel="stylesheet" type="text/css" href="../Styles/creator.css">
     <script src="https://kit.fontawesome.com/daef4a3074.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../Fonts/style.css">
+    <link rel="shortcut icon" href="../Img/logo.svg" type="image/x-icon">
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 </head>
 <body class="theme" id="body">
     <header>
@@ -73,29 +76,44 @@
                     <div class="cut-corner 3"></div>
                     <div class="cut-corner 4"></div>
                     <div class="content-camera-area">
-                        <h1>Aquí podrás crear tus propios <span>GIFOS</span></h1>
-                        <h2>¡Crea tu GIFO en sólo 3 pasos! 
-                        <br>(sólo necesitas una cámara para grabar un video)</h2>
+                        <div class="text-container">
+                            <h1>Aquí podrás crear tus propios <span>GIFOS</span></h1>
+                            <h2>¡Crea tu GIFO en sólo 3 pasos! 
+                            <br>(sólo necesitas una cámara para grabar un video)</h2>
+                        </div>
+                        <video src="" class="get-video"></video>
+                        <div class="gifo-container">
+                            <img src="" alt="" class="gifo-result">
+                            <div class="gifo-layer">
+                                <img src="../Img/loader.svg" alt="">
+                                <p>Estamos subiendo tu GIFO</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="steps-elements">
                     <div class="steps-numbers">
-                        <div class="step 1">1</div>
-                        <div class="step 2">2</div>
-                        <div class="step 3">3</div>
+                        <div class="step first">1</div>
+                        <div class="step second">2</div>
+                        <div class="step third">3</div>
                     </div>
+                    <div class="timer">00:00:00</div>
+                    <div class="timer-text">REPETIR CAPTURA</div>
                     <div class="creator-bar"></div>
-                    <div class="start-button">
-                        <button>COMENZAR</button>
+                    <div class="buttons">
+                        <button class="btn start">COMENZAR</button>
+                        <button class="btn record">GRABAR</button>
+                        <button class="btn stop-record">FINALIZAR</button>
+                        <button class="btn upload">SUBIR GIFO</button>
                     </div>
                 </div>
             </div>
             <div class="img">
-                <div class="camera-img">
-                    <img src="../Img/camara.svg" alt="">
-                    <img src="../Img/element-luz-camara.svg" alt="" class="light">
-                </div>
-                <img src="../Img/pelicula.svg" alt="" class="reel">
+                <div class="camera-img"></div>
+                <div class="reel-small"></div>
+                <div class="reel-medium"></div>
+                <div class="camera-light"></div>
+                <div class="reel"></div>
             </div>
         </section>
     </main>
@@ -117,6 +135,7 @@
         </div>
         <div class="blue-bar-bot"></div>
     </footer>
-    <script src="../Scripts/main.js"></script>
+    <script type="module" src="../Scripts/main.js"></script>
+    <script src="../Scripts/create.js"></script>
 </body>
 </html>

@@ -8,6 +8,10 @@
   --inputText: #000000;
   --textSectionColor: #50e3c2;
   --backgroundColorGradient: #ffffffe6;
+  --camera: url(../Img/camara.svg);
+  --reel-small: url(../Img/element_cinta1.svg);
+  --reel-medium: url(../Img/element_cinta2.svg);
+  --reel: url(../Img/pelicula.svg);
 }
 
 .theme--dark {
@@ -19,6 +23,10 @@
   --inputText: #ffffff;
   --textSectionColor: #ffffff;
   --backgroundColorGradient: #37383ce6;
+  --camera: url(../Img/camara-modo-noc.svg);
+  --reel-small: url(../Img/element_cinta1-modo-noc.svg);
+  --reel-medium: url(../Img/element_cinta2-modo-noc.svg);
+  --reel: url(../Img/pelicula-modo-noc.svg);
 }
 
 * {

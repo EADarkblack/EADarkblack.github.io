@@ -7,8 +7,11 @@
     <title>GIFOS</title>
     <link rel="stylesheet" type="text/css" href="../Styles/misgifos.css">
     <script src="https://kit.fontawesome.com/daef4a3074.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../Fonts/style.css">
+    <link rel="shortcut icon" href="../Img/logo.svg" type="image/x-icon">
 </head>
 <body class="theme" id="body">
+    <div class="expand-view"></div>
     <header>
         <div class="blue-bar-top"></div>
         <nav>
@@ -80,8 +83,21 @@
                 <h2>Trending GIFOS</h2>
                 <p>Mira los últimos GIFOS de nuestra comunidad.</p>
             </div>
-            <div class="trending-img">
-                <img src="../img/a-tomar-por-saco-el-niño.gif" alt="">
+            <div class="trends-gif-elements">
+                <div class="button-slider previous">
+                    <span>&#10094;</span>
+                </div>
+                <div class="trending-container">
+                    <div class="track">
+                        <div class="three-elements-container first"></div>
+                        <div class="three-elements-container second"></div>
+                        <div class="three-elements-container third"></div>
+                        <div class="three-elements-container fourth"></div>
+                    </div>
+                </div>
+                <div class="button-slider next">
+                    <span>&#10095;</span>
+                </div>
             </div>
         </section>
     </main>
@@ -103,6 +119,7 @@
         </div>
         <div class="blue-bar-bot"></div>
     </footer>
-    <script src="../Scripts/main.js"></script>
+    <script type="module" src="../Scripts/main.js"></script>
+    <script type="module" src="../Scripts/trending.js"></script>
 </body>
 </html>
