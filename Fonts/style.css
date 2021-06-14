@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?bjluno');
-  src:  url('fonts/icomoon.eot?bjluno#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?bjluno') format('truetype'),
-    url('fonts/icomoon.woff?bjluno') format('woff'),
-    url('fonts/icomoon.svg?bjluno#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?jrawsl');
+  src:  url('fonts/icomoon.eot?jrawsl#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?jrawsl') format('truetype'),
+    url('fonts/icomoon.woff?jrawsl') format('woff'),
+    url('fonts/icomoon.svg?jrawsl#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -28,6 +28,24 @@
 .icon-icon-fav-active:before {
   content: "\e906";
   color: #572ee5;
+}
+.icon-icon-link-hover .path1:before {
+  content: "\e907";
+  color: rgb(255, 255, 255);
+}
+.icon-icon-link-hover .path2:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(87, 46, 229);
+}
+.icon-icon-trash-hover .path1:before {
+  content: "\e909";
+  color: rgb(255, 255, 255);
+}
+.icon-icon-trash-hover .path2:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(87, 46, 229);
 }
 .icon-icon-download .path1:before {
   content: "\e900";

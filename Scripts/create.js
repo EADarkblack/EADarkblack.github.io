@@ -1,3 +1,6 @@
+import api from '../Services/services.js'
+import {addDownloadBtn} from './search.js'
+
 // Variables
 
 const startBtn = document.querySelector(".start");
@@ -14,6 +17,10 @@ const uploadBtn = document.querySelector(".upload");
 const gifResult = document.querySelector(".gifo-result");
 const gifContainer = document.querySelector(".gifo-container");
 const gifLayer = document.querySelector(".gifo-layer");
+const iconsGif = document.querySelector(".icons-gif");
+const smallReel = document.querySelector(".reel-small");
+const mediumReel = document.querySelector(".reel-medium");
+const light = document.querySelector(".camera-light");
 const DATA_RECORDER = {
     type: "gif",
     framerate: 1,
@@ -25,6 +32,7 @@ const DATA_RECORDER = {
 let recorder = null;
 let blob = null;
 let time = null;
+let count = 0;
 
 // Functions
 
@@ -70,12 +78,7 @@ const secondStep = function(stream) {
     secondStepIcon.classList.add("step-active");
     startBtn.style.display = "none";
     recordBtn.style.display = "block";
-    recordBtn.addEventListener("click", () => {
-        recorder = RecordRTC(stream, DATA_RECORDER);
-        recorder.startRecording();
-        stopRecording();
-        countTime();
-    })
+    recordBtnEventHandle(stream);
 }
 
 /**
@@ -86,16 +89,6 @@ const stopRecording = function() {
     recordBtn.style.display = "none";
     stopRecordingBtn.style.display = "block";
     timer.style.display = "block";
-    stopRecordingBtn.addEventListener("click", () => {
-        recorder.stopRecording(() => {
-            blob = recorder.getBlob();
-            gifResult.src = URL.createObjectURL(blob);
-            videoContainer.style.display = "none";
-            gifContainer.style.display = "block";
-            beforeThirdStep();
-        });
-    })
-    
 }
 
 /**
@@ -103,7 +96,6 @@ const stopRecording = function() {
  */
 
 const countTime = function() {
-    let count = 0;
     time = setInterval(() => {
         count++;
         timer.innerText = setTime(count);
@@ -135,7 +127,6 @@ const beforeThirdStep = function() {
     repeatRecord.style.display = "block";
     stopRecordingBtn.style.display = "none";
     uploadBtn.style.display = "block";
-    uploadBtn.addEventListener("click", thirdStep)
 }
 
 /**
@@ -148,14 +139,116 @@ const thirdStep = function() {
     thirdStepIcon.classList.add("step-active");
     uploadBtn.style.opacity = "0";
     gifLayer.style.opacity = "1";
+    uploadGifo();
+}
+
+/**
+ * 
+ */
+
+const recordBtnEventHandle = function(stream) {
+    recordBtn.addEventListener("click", () => {
+        recorder = RecordRTC(stream, DATA_RECORDER);
+        recorder.startRecording();
+        stopRecording();
+        count = 0;
+        clearInterval(time);
+        countTime();
+        smallReel.style.display = "block";
+        mediumReel.style.display = "block";
+        light.style.display = "block";
+    })
+}
+
+/**
+ * 
+ */
+
+const uploadGifo = function() {
+    api.apiUploadGif(blob)
+    .then((res) => {
+        const {data} = res;
+        api.apiGetFavoriteId(data.id)
+        .then((res) => {
+            const {data} = res;
+            const myGifosArr = api.getMyGifFromLocalStorage() || [];
+            const loaderIcon = document.querySelector(".loader");
+            const checkIcon = document.querySelector(".check");
+            const loadText = document.querySelector(".loader-text");
+            loaderIcon.style.display = "none";
+            checkIcon.style.display = "block";
+            iconsGif.style.display = "block";
+            iconsGif.innerHTML = `
+                <span class="icon-icon-download" id="dow-${data.id}">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                </span>
+                <span class="icon-icon-link-hover">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                </span>
+            `
+            loadText.innerText = "GIFO subido con éxito";
+            copyToClipboardBtn(data);
+            addDownloadBtn();
+            myGifosArr.push(data)
+            api.setMyGifToLocalStorage(myGifosArr);
+        })
+        .catch(err => console.error(`No se ha podido conectar a la Api de busqueda por Id: ${err}`))
+    })
+    .catch((err) => {
+        console.error(`Error al conectar con la Api de subida: ${err}`);
+        alert("Ha ocurrido un error con la subida de tu Gifo, intentalo de nuevo.");
+    });
+}
+
+/**
+ * 
+ */
+
+const copyToClipboardBtn = function(data) {
+    const linkContainer = document.createElement("textarea");
+    const link = document.createTextNode(`${data.url}`);
+    linkContainer.appendChild(link);
+    iconsGif.insertAdjacentElement("afterbegin", linkContainer);
+    linkContainer.style.opacity = "0";
+    const linkBtn = document.querySelector(".icon-icon-link-hover");
+    linkBtn.addEventListener("click", () => {
+        linkContainer.select();
+        try {
+            let copy = document.execCommand("copy");
+            let msg = copy ? "Enlace copiado al portapapeles." : "El enlace no pudo ser copiado al portapapeles.";
+            alert(msg);
+        } catch (error) {
+            let err = error;
+            alert(err);
+        }
+    })
 }
 
 // Listerners
 
+stopRecordingBtn.addEventListener("click", () => {
+    recorder.stopRecording(() => {
+        blob = recorder.getBlob();
+        gifResult.src = URL.createObjectURL(blob);
+        videoContainer.style.display = "none";
+        gifContainer.style.display = "block";
+        beforeThirdStep();
+    });
+})
 repeatRecord.addEventListener("click", () => {
-    location.reload();
+    uploadBtn.style.display = "none";
+    repeatRecord.style.display = "none";
+    gifContainer.style.display = "none";
+    videoContainer.style.display = "block";
+    smallReel.style.display = "none";
+    mediumReel.style.display = "none";
+    light.style.display = "none";
+    getUserCamera();
 });
 startBtn.addEventListener("click", () => {
     firstStep();
     getUserCamera();
 });
+uploadBtn.addEventListener("click", thirdStep);

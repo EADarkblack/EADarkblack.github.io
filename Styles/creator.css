@@ -256,6 +256,7 @@ body main .creator-section .creator-elements .camera-area .cut-corner:nth-child(
 
 body main .creator-section .creator-elements .camera-area .content-camera-area {
   margin: 0 2rem 0 2rem;
+  position: relative;
 }
 
 body main .creator-section .creator-elements .camera-area .content-camera-area h1 {
@@ -279,14 +280,14 @@ body main .creator-section .creator-elements .camera-area .content-camera-area h
 }
 
 body main .creator-section .creator-elements .camera-area .content-camera-area .get-video {
-  width: 93%;
+  width: 100%;
   height: 21.7rem;
   position: absolute;
-  right: 0.15rem;
-  bottom: -8.27rem;
-  margin: 0 1.25rem;
-  -webkit-transform: scaleX(1.4);
-          transform: scaleX(1.4);
+  left: 0;
+  top: -4.1rem;
+  margin: 0 1.25rem 0 0;
+  -webkit-transform: scaleX(1.32) scaleY(3.3);
+          transform: scaleX(1.32) scaleY(3.3);
 }
 
 body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container {
@@ -325,10 +326,80 @@ body main .creator-section .creator-elements .camera-area .content-camera-area .
           justify-content: center;
 }
 
-body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer img {
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif {
+  display: none;
+  margin: 0.69rem 0.75rem 0 0;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  position: absolute;
+  top: 0;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-download {
+  font-size: 2rem;
+  position: relative;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-download .path2 {
+  position: absolute;
+  left: 2rem;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-download:hover {
+  opacity: 1;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-link-hover {
+  font-size: 2rem;
+  position: relative;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-link-hover .path2 {
+  position: absolute;
+  left: 2rem;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-link-hover:hover {
+  opacity: 1;
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .loader {
   height: 1.38rem;
   width: 1.38rem;
   margin-bottom: 0.63rem;
+  -webkit-animation: 3s loading linear infinite;
+          animation: 3s loading linear infinite;
+}
+
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .check {
+  display: none;
+  margin-bottom: 0.88rem;
 }
 
 body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer p {
@@ -496,6 +567,7 @@ body main .creator-section .img .camera-img {
 }
 
 body main .creator-section .img .reel-small {
+  display: none;
   background-image: var(--reel-small);
   height: 4.65rem;
   width: 4.5rem;
@@ -504,9 +576,34 @@ body main .creator-section .img .reel-small {
   top: 0.4rem;
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
+  -webkit-animation: 3s rotate-reel linear infinite;
+          animation: 3s rotate-reel linear infinite;
+}
+
+@-webkit-keyframes rotate-reel {
+  from {
+    -webkit-transform: rotate(0deg) scale(0.7);
+            transform: rotate(0deg) scale(0.7);
+  }
+  to {
+    -webkit-transform: rotate(360deg) scale(0.7);
+            transform: rotate(360deg) scale(0.7);
+  }
+}
+
+@keyframes rotate-reel {
+  from {
+    -webkit-transform: rotate(0deg) scale(0.7);
+            transform: rotate(0deg) scale(0.7);
+  }
+  to {
+    -webkit-transform: rotate(360deg) scale(0.7);
+            transform: rotate(360deg) scale(0.7);
+  }
 }
 
 body main .creator-section .img .reel-medium {
+  display: none;
   background-image: var(--reel-medium);
   height: 6.2rem;
   width: 6.2rem;
@@ -515,15 +612,44 @@ body main .creator-section .img .reel-medium {
   bottom: 17rem;
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
+  -webkit-animation: 3s rotate-reel linear infinite;
+          animation: 3s rotate-reel linear infinite;
 }
 
 body main .creator-section .img .camera-light {
+  display: none;
   background-image: url(../Img/element-luz-camara.svg);
   height: 8.5rem;
   width: 4rem;
   position: absolute;
   left: 11.8rem;
   top: 1.2rem;
+  -webkit-animation: 3s ligth linear infinite;
+          animation: 3s ligth linear infinite;
+}
+
+@-webkit-keyframes ligth {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ligth {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 body main .creator-section .img .reel {
@@ -665,9 +791,124 @@ body footer .blue-bar-bot {
     left: 38.8rem;
   }
   body main .creator-section .creator-elements .camera-area .content-camera-area {
-    position: relative;
     bottom: 6rem;
     margin: 0;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .get-video {
+    width: 93%;
+    height: 21.7rem;
+    position: absolute;
+    right: 0.15rem;
+    bottom: -8.27rem;
+    margin: 0 1.25rem;
+    -webkit-transform: scaleX(1.4);
+            transform: scaleX(1.4);
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container {
+    display: none;
+    position: absolute;
+    width: 94%;
+    height: 21.7rem;
+    bottom: -8.27rem;
+    margin: 0 1.25rem;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-result {
+    width: 100%;
+    height: 100%;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #572ee5e6;
+    opacity: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif {
+    display: none;
+    margin: 0.69rem 0.75rem 0 0;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    position: absolute;
+    top: 0;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-download {
+    font-size: 2rem;
+    position: relative;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-download .path2 {
+    position: absolute;
+    left: 2rem;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-download:hover {
+    opacity: 1;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-link-hover {
+    font-size: 2rem;
+    position: relative;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-link-hover .path2 {
+    position: absolute;
+    left: 2rem;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .icons-gif .icon-icon-link-hover:hover {
+    opacity: 1;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .loader {
+    height: 1.38rem;
+    width: 1.38rem;
+    margin-bottom: 0.63rem;
+    -webkit-animation: 3s loading linear infinite;
+            animation: 3s loading linear infinite;
+  }
+  @-webkit-keyframes loading {
+    from {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes loading {
+    from {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer .check {
+    display: none;
+    margin-bottom: 0.88rem;
+  }
+  body main .creator-section .creator-elements .camera-area .content-camera-area .gifo-container .gifo-layer p {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 0.94rem;
+    letter-spacing: 0;
+    line-height: 1.19rem;
   }
   body main .creator-section .creator-elements .steps-elements .creator-bar {
     display: block;

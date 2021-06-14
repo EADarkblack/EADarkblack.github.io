@@ -150,6 +150,38 @@ export default {
         } else {
             return [];
         }
+    },
+
+    /**
+     * 
+     */
+
+    apiUploadGif(blob) {
+        const url = `${UPLOAD_EP}?api_key=${APIKEY}`;
+        let form = new FormData();
+        form.append("file", blob, "myGif.gif");
+        return new Promise((resolve, reject) => {
+            fetch(url, {method: "POST", body: form})
+            .then(res => res.json())
+            .then(data => resolve(data))
+            .catch(err => reject(err));
+        })
+    },
+
+    /**
+     * 
+    */
+
+    setMyGifToLocalStorage(myGifosArr) {
+        localStorage.setItem("mygifs", JSON.stringify(myGifosArr));
+    },
+
+    /**
+     * 
+     */
+
+    getMyGifFromLocalStorage() {
+        return JSON.parse(localStorage.getItem("mygifs"));
     }
 }
 
