@@ -18,7 +18,7 @@ body{
         display: block;
         height: 100%;
         width: 100%;
-        background: linear-gradient(0deg, var(--backgroundColor) 0%, var(--backgroundColorGradient) 100%);
+        background-color: var(--backgroundColorGradient);
         z-index: 3;
         position: absolute;
         .close-icon{
@@ -142,14 +142,17 @@ body{
         }
         nav{
             height: 5.938rem;
-            .logo{
-                margin: 1.81rem 0 1.08rem 1.38rem;
-                .logo-svg{
-                    height: 3.05rem;
-                    width: 3.05rem;
-                    #GIFOS{
-                        fill: var(--mainColor);
-                    }
+            .logo-container{
+                position: relative;
+                .logo-img{
+                    position: absolute;
+                    top: -0.75rem;
+                    left: -0.65rem;
+                    background-image: var(--logo);
+                    height: 3.69rem;
+                    width: 3.89rem;
+                    margin: 1.81rem 0 1.81rem 1.38rem;
+                    transform: scale(0.8);
                 }
             }
             .hamMenu{
@@ -219,10 +222,10 @@ body{
                     li:nth-child(2n + 3){
                         margin: 0.87rem 0 0.69rem 0;
                     }
-                    a{
-                        text-decoration: none;  
+                    .li-create{
+                        display: none;
                         .new-gifos-button{
-                            display: none;
+                            display: block;
                             height: 3.38rem;
                             width: 3.38rem;
                             border-radius: 100%;
@@ -242,6 +245,13 @@ body{
                                 color: var(--backgroundColor);
                             }
                         }
+                    }
+                    .li-create:hover{
+                        border-bottom: unset;
+                    }
+                    a{
+                        text-decoration: none;  
+                        color: $mainColorDM;
                     }
                 }   
                 .display-menu{
@@ -846,11 +856,11 @@ body{
                 height: 5.63rem;
                 display: flex;
                 justify-content: space-between;
-                .logo{
-                    margin: 1.13rem 0 0.81rem 9.75rem;
-                    .logo-svg{
-                        height: 3.69rem;
-                        width: 3.69rem;
+                .logo-container{
+                    .logo-img{
+                        position: unset;
+                        margin: 1.13rem 0 0.81rem 9.75rem;
+                        transform: unset;
                     }
                 }
                 .hamMenu{
@@ -880,13 +890,16 @@ body{
                             margin: 0;
                             text-transform: uppercase;
                         }
+                        a{
+                            color: var(--mainColor);
+                        }
                         li:nth-child(2n + 3){
                             margin: 0;
                         }
-                        li:nth-child(1){
+                        .li-create{
                             display: block;
                         }
-                        .creator:nth-last-child(1){
+                        .creator:nth-last-child(2){
                             display: none;
                         }
                     }
@@ -1139,11 +1152,11 @@ body{
                 height: 5.63rem;
                 display: flex;
                 justify-content: space-between;
-                .logo{
-                    margin: 1.13rem 0 0.81rem 3rem;
-                    .logo-svg{
-                        height: 3.69rem;
-                        width: 3.69rem;
+                .logo-container{
+                    .logo-img{
+                        position: unset;
+                        margin: 1.13rem 0 0.81rem 3rem;
+                        transform: unset;
                     } 
                 }
                 .hamMenu{
@@ -1172,17 +1185,17 @@ body{
                             line-height: 1rem;
                             margin: 0;
                             text-transform: uppercase;
-                            a{
-                                color: $mainColor;
-                            }
+                        }
+                        a{
+                            color: var(--mainColor);
                         }
                         li:nth-child(2n + 3){
                             margin: 0;
                         }
-                        li:nth-child(1){
+                        .li-create{
                             display: block;
                         }
-                        .creator:nth-last-child(1){
+                        .creator:nth-last-child(2){
                             display: none;
                         }
                     }

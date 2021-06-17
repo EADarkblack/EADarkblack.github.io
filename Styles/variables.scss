@@ -40,6 +40,7 @@ $reel-small: url(../Img/element_cinta1.svg);
 $reel-medium: url(../Img/element_cinta2.svg);
 $reel: url(../Img/pelicula.svg);
 $camera-light: url(../Img/element-luz-camara.svg);
+$logo: url(../Img/logo.svg);
 
 // Dark Mode Images
 
@@ -47,6 +48,7 @@ $cameraDM: url(../Img/camara-modo-noc.svg);
 $reel-smallDM: url(../Img/element_cinta1-modo-noc.svg);
 $reel-mediumDM: url(../Img/element_cinta2-modo-noc.svg);
 $reelDM: url(../Img/pelicula-modo-noc.svg);
+$logoDM: url(../Img/logo-noc.svg);
 
 // Bright Theme and Dark Theme
 
@@ -66,6 +68,7 @@ $reelDM: url(../Img/pelicula-modo-noc.svg);
     --reel-small: #{$reel-small};
     --reel-medium: #{$reel-medium};
     --reel: #{$reel};
+    --logo: #{$logo};
 
     &--dark{
         --backgroundColor: #{$backgroundColorDM};
@@ -83,5 +86,6 @@ $reelDM: url(../Img/pelicula-modo-noc.svg);
         --reel-small: #{$reel-smallDM};
         --reel-medium: #{$reel-mediumDM};
         --reel: #{$reelDM};
+        --logo: #{$logoDM};
     }
 }

@@ -84,7 +84,7 @@ export default {
         .then(res => {
             const {data} = res;
             const gifById = document.getElementById(`${id}`);
-            const expandGifId = document.querySelector(".expand") || false;
+            const expandGifId = document.querySelector(".expand");
             const favArray = this.getFavElementsLS() || [];
             if (favArray.some((favArray) => favArray.id === id)) {
                 this.deleteSame(favArray, id);
@@ -153,7 +153,7 @@ export default {
     },
 
     /**
-     * 
+     * Creates a form data and make a post request to the Api
      */
 
     apiUploadGif(blob) {
@@ -169,19 +169,64 @@ export default {
     },
 
     /**
-     * 
-    */
+     * Saves to an array in the localstorage the gif created by the user
+     */
 
     setMyGifToLocalStorage(myGifosArr) {
         localStorage.setItem("mygifs", JSON.stringify(myGifosArr));
     },
 
     /**
-     * 
+     * Gets from the localstorage all gifs created by the user
      */
 
     getMyGifFromLocalStorage() {
         return JSON.parse(localStorage.getItem("mygifs"));
+    },
+
+    /**
+     * Detects when the user send the same id from the gif created by his/her and delete it from the localstorage and apply a reload for update the page
+     */
+
+    deleteGifo(id) {
+        this.apiGetFavoriteId(id)
+        .then(res => {
+            const {data} = res;
+            const gifosArray = this.getMyGifFromLocalStorage() || [];
+            const expandGifoContainer = document.querySelector(".expand-elements");
+            if (gifosArray.some((gifosArray) => gifosArray.id === data.id)) {
+                this.deleteSameGifoId(gifosArray, id);
+            }
+            this.setMyGifToLocalStorage(gifosArray);
+            if (expandGifoContainer) {
+                location.reload();
+            }
+        })
+        .catch(err => console.error(`Un error ha ocurrido con la Api de busqueda por Id: ${err}`));
+    },
+
+    /**
+     * Creates a new array with all gif's id created by the user and delete the gif with the same id
+     */
+
+     deleteSameGifoId(gifosArray, id) {
+        const i = gifosArray.map((itemArray) => itemArray.id).indexOf(id);
+        if (i !== -1) {
+            gifosArray.splice(i, 1);
+        }
+    },
+
+    /**
+     * Returns an array with the first 12 elements and gets from the offset the next 12 elements until not exist more
+     */
+
+     getLimitGifoElements(limit = 12, offset = 0) {
+        if (!!localStorage.getItem("mygifs")) {
+            const limitGifos = JSON.parse(localStorage.getItem("mygifs"));
+            return limitGifos.slice(offset, offset + limit); 
+        } else {
+            return [];
+        }
     }
 }
 

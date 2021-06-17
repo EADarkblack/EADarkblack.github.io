@@ -64,7 +64,7 @@ const showTrendsData = function(data) {
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-max-normal" id="exp-${data[i].id}">
+                            <span class="icon-icon-max-normal all-gifs" id="exp-${data[i].id}">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
@@ -94,7 +94,7 @@ const showTrendsData = function(data) {
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
-                        <span class="icon-icon-max-normal" id="exp-${data[i].id}">
+                        <span class="icon-icon-max-normal all-gifs" id="exp-${data[i].id}">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
@@ -124,7 +124,7 @@ const showTrendsData = function(data) {
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
-                        <span class="icon-icon-max-normal" id="exp-${data[i].id}">
+                        <span class="icon-icon-max-normal all-gifs" id="exp-${data[i].id}">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
@@ -154,7 +154,7 @@ const showTrendsData = function(data) {
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
-                        <span class="icon-icon-max-normal" id="exp-${data[i].id}">
+                        <span class="icon-icon-max-normal all-gifs" id="exp-${data[i].id}">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </span>
@@ -170,7 +170,7 @@ const showTrendsData = function(data) {
     }
     addFavBtnOnlyTrends();
     addDownloadBtnOnlyTrends();
-    addExpandBtn();
+    addExpandBtn(); 
     trackEventStop();
 }
 
@@ -198,7 +198,7 @@ const showTrendsDataMobile = function(data) {
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-max-normal" id="exp-${data[i].id}">
+                            <span class="icon-icon-max-normal all-gifs" id="exp-${data[i].id}">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
@@ -378,7 +378,7 @@ const markupTrendToFav = function(data) {
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-max-normal" id="exp-${data.id}">
+                            <span class="icon-icon-max-normal all-gifs" id="exp-${data.id}">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>

@@ -8,42 +8,16 @@
     <link rel="stylesheet" type="text/css" href="../Styles/creator.css">
     <script src="https://kit.fontawesome.com/daef4a3074.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Fonts/style.css">
-    <link rel="shortcut icon" href="../Img/logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../Img/logo-noc.svg" type="image/x-icon">
     <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 </head>
 <body class="theme" id="body">
     <header>
         <div class="blue-bar-top"></div>
         <nav>
-            <div class="logo">
+            <div class="logo-container">
                 <a href="../index.html">
-                    <?xml version="1.0" encoding="UTF-8"?>
-                    <svg width="63px" height="60px" viewBox="0 0 63 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="logo-svg"> 
-                        <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-                        <title>logo-desktop</title>
-                        <desc>Created with Sketch.</desc>
-                        <defs>
-                            <polygon id="path-1" points="0.494619458 0.526112695 58.2715334 0.526112695 58.2715334 24.1695652 0.494619458 24.1695652"></polygon>
-                        </defs>
-                        <g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="00-UI-Kit" transform="translate(-156.000000, -2463.000000)">
-                                <g id="logo-desktop" transform="translate(156.000000, 2463.000000)">
-                                    <g id="Group-5">
-                                        <polygon id="Fill-1" fill="#5ED7C6" points="0 -0.0002 0 59.1084314 59.1086314 59.1084314 59.1086314 46.4422961 54.8865863 46.4422961 54.8865863 54.8863863 4.2220451 54.8863863 4.2220451 4.2218451 42.220451 4.2218451 42.220451 16.8879804 54.8865863 16.8879804 54.8865863 25.332915 59.1086314 25.332915 59.1086314 12.6659353 46.4424961 -0.0002"></polygon>
-                                        <g id="Group-4" transform="translate(9.000000, 20.000000)">
-                                            <mask id="mask-2" fill="white">
-                                                <use xlink:href="#path-1"></use>
-                                            </mask>
-                                            <g id="Clip-3"></g>
-                                            <text id="GIFOS" mask="url(#mask-2)" font-family="Roboto-Black, Roboto" font-size="18" font-weight="700" fill="#572EE5">
-                                                <tspan x="2" y="21">GIFOS</tspan>
-                                            </text>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
+                    <div class="logo-img"></div>
                 </a>
             </div>
             <div class="hamMenu">
@@ -55,11 +29,11 @@
                 <ul id="menu" class="menu">
                     <li class="theme-button">Modo Nocturno</li>
                     <li></li>
-                    <a href="../Pages/favs.html"><li>Favoritos</li></a>
+                    <li><a href="./favs.html">Favoritos</a></li>
                     <li></li>
-                    <a href="../Pages/mis-gifos.html"><li>Mis GIFOS</li></a>
+                    <li><a href="./mis-gifos.html">Mis GIFOS</a></li>
                     <li></li>
-                    <li class="new-gifos-button"><span>+</span></li>
+                    <li class="li-create"><div class="new-gifos-button"><span>+</span></div></li>
                     <li></li>
                     <li class="creator">Crear GIFO</li>
                     <li></li>
@@ -81,13 +55,13 @@
                             <h2>¡Crea tu GIFO en sólo 3 pasos! 
                             <br>(sólo necesitas una cámara para grabar un video)</h2>
                         </div>
-                        <video src="" class="get-video"></video>
+                        <video class="get-video"></video>
                         <div class="gifo-container">
-                            <img src="" alt="" class="gifo-result">
+                            <img src="#" alt="Aqui es donde se muestra el gif creado por el usuario." class="gifo-result">
                             <div class="gifo-layer">
                                 <div class="icons-gif"></div>
-                                <img src="../Img/check.svg" alt="" class="check">
-                                <img src="../Img/loader.svg" alt="" class="loader">
+                                <img src="../Img/check.svg" alt="Icono de subida completa." class="check">
+                                <img src="../Img/loader.svg" alt="Icono de subida en proceso." class="loader">
                                 <p class="loader-text">Estamos subiendo tu GIFO</p>
                             </div>
                         </div>

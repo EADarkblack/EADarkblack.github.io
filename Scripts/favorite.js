@@ -66,7 +66,7 @@ const markupFavElements = function(favElements) {
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-max-normal" id="exp-${favElements[i].id}">
+                            <span class="icon-icon-max-normal all-gifs" id="exp-${favElements[i].id}">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>

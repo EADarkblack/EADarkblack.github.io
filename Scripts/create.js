@@ -1,7 +1,7 @@
 import api from '../Services/services.js'
 import {addDownloadBtn} from './search.js'
 
-// Variables
+// Global Variables
 
 const startBtn = document.querySelector(".start");
 const videoContainer = document.querySelector(".get-video");
@@ -70,7 +70,7 @@ const getUserCamera = function() {
 }
 
 /**
- * Adds to the record button its functionality and make some changes on the DOM (starts the recording process)
+ * Makes some changes on the DOM (starts the recording process)
  */
 
 const secondStep = function(stream) {
@@ -130,7 +130,7 @@ const beforeThirdStep = function() {
 }
 
 /**
- * Hides some elements and initiates the upload process (no ended)
+ * Hides some elements and initiates the upload process
  */
 
 const thirdStep = function() {
@@ -143,7 +143,7 @@ const thirdStep = function() {
 }
 
 /**
- * 
+ * Adds to record button its functionality and initiates the animation for the camera image
  */
 
 const recordBtnEventHandle = function(stream) {
@@ -161,7 +161,7 @@ const recordBtnEventHandle = function(stream) {
 }
 
 /**
- * 
+ * Sends the blob object to the upload api and when receive the gif's id push to the localstorage (also show the download and share button)
  */
 
 const uploadGifo = function() {
@@ -203,7 +203,7 @@ const uploadGifo = function() {
 }
 
 /**
- * 
+ * Creates an invisible textarea with the gif's url and copy this url to the clipboard
  */
 
 const copyToClipboardBtn = function(data) {

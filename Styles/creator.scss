@@ -20,14 +20,17 @@ body{
         }
         nav{
             height: 5.938rem;
-            .logo{
-                margin: 1.81rem 0 1.08rem 1.38rem;
-                .logo-svg{
-                    height: 3.05rem;
-                    width: 3.05rem;
-                    #GIFOS{
-                        fill: var(--mainColor);
-                    }
+            .logo-container{
+                position: relative;
+                .logo-img{
+                    position: absolute;
+                    top: -0.75rem;
+                    left: -0.65rem;
+                    background-image: var(--logo);
+                    height: 3.69rem;
+                    width: 3.89rem;
+                    margin: 1.81rem 0 1.81rem 1.38rem;
+                    transform: scale(0.8);
                 }
             }
             .hamMenu{
@@ -93,20 +96,30 @@ body{
                     li:nth-child(2n + 3){
                         margin: 0.87rem 0 0.69rem 0;
                     }
-                    .new-gifos-button{
+                    a{
+                        text-decoration: none;  
+                        color: $mainColorDM;
+                    }
+                    .li-create{
                         display: none;
-                        height: 3.38rem;
-                        width: 3.38rem;
-                        border-radius: 100%;
-                        border: 1px solid $thirdColor;
-                        background-color: $thirdColor;
-                        span{
-                            font-size: 2rem;
-                            font-weight: lighter;
-                            position: relative;
-                            top: 35%;
-                            color: #ffffff;
+                        .new-gifos-button{
+                            display: block;
+                            height: 3.38rem;
+                            width: 3.38rem;
+                            border-radius: 100%;
+                            border: 1px solid $thirdColor;
+                            background-color: $thirdColor;
+                            span{
+                                font-size: 2rem;
+                                font-weight: lighter;
+                                position: relative;
+                                top: 35%;
+                                color: #ffffff;
+                            }
                         }
+                    }
+                    .li-create:hover{
+                        border-bottom: unset;
                     }
                     .new-gifos-button:hover{
                         border-bottom: 2px solid $thirdColor;
@@ -173,8 +186,10 @@ body{
                         left: 38.7rem;
                     }
                     .content-camera-area{
-                        margin: 0 2rem 0 2rem;
                         position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         h1{
                             font-family: $monserratFont;
                             color: var(--mainColor);
@@ -194,20 +209,16 @@ body{
                         }
                         .get-video{
                             width: 100%;
-                            height: 21.7rem;
+                            height: 30rem;
                             position: absolute;
-                            left: 0;
-                            top: -4.1rem;
-                            margin: 0 1.25rem 0 0;
-                            transform: scaleX(1.32) scaleY(3.3);
+                            align-self: center;
+                            justify-self: center;
                         }
                         .gifo-container{
                             display: none;
                             position: absolute;
-                            width: 94%;
-                            height: 21.7rem;
-                            bottom: -8.27rem;
-                            margin: 0 1.25rem;
+                            width: 100%;
+                            height: 30rem;
                             .gifo-result{ 
                                 width: 100%;
                                 height: 100%;
@@ -325,10 +336,6 @@ body{
                         font-size: 0.94rem;
                         letter-spacing: 0;
                         line-height: 1.38rem;
-                        margin-top: 1.81rem;
-                        position: absolute;
-                        bottom: 6.45rem;
-                        right: 3.3rem;
                     }
                     .timer-text{
                         display: none;
@@ -338,12 +345,8 @@ body{
                         font-size: 0.94rem;
                         letter-spacing: 0;
                         line-height: 1.38rem;
-                        margin-top: 1.81rem;
-                        position: absolute;
-                        bottom: 6.45rem;
-                        right: 3.3rem;
-                        z-index: 1;
                         cursor: pointer;
+                        z-index: 1;
                     }
                     .timer-text:hover{
                         border-bottom: 2px solid $textSectionColor;
@@ -516,11 +519,11 @@ body{
                 height: 5.63rem;
                 display: flex;
                 justify-content: space-between;
-                .logo{
-                    margin: 1.13rem 0 0.81rem 9.75rem;
-                    .logo-svg{
-                        height: 3.69rem;
-                        width: 3.69rem;
+                .logo-container{
+                    .logo-img{
+                        position: unset;
+                        margin: 1.13rem 0 0.81rem 9.75rem;
+                        transform: unset;
                     }
                 }
                 .hamMenu{
@@ -550,10 +553,13 @@ body{
                             margin: 0;
                             text-transform: uppercase;
                         }
+                        a{
+                            color: var(--mainColor);
+                        }
                         li:nth-child(2n + 3){
                             margin: 0;
                         }
-                        .new-gifos-button{
+                        .li-create{
                             display: block;
                         }
                         .creator{
@@ -595,104 +601,33 @@ body{
                         }
                         .content-camera-area{
                             bottom: 6rem;
-                            margin: 0;
                             .get-video{
-                                width: 93%;
-                                height: 21.7rem;
-                                position: absolute;
-                                right: 0.15rem;
-                                bottom: -8.27rem;
-                                margin: 0 1.25rem;
-                                transform: scaleX(1.4);
-                            }
-                            .gifo-container{
-                                display: none;
-                                position: absolute;
                                 width: 94%;
                                 height: 21.7rem;
-                                bottom: -8.27rem;
-                                margin: 0 1.25rem;
-                                .gifo-result{ 
-                                    width: 100%;
-                                    height: 100%;
-                                }
-                                .gifo-layer{
-                                    position: absolute;
-                                    top: 0;
-                                    width: 100%;
-                                    height: 100%;
-                                    background: $hamMenuBgColor;
-                                    opacity: 0;
-                                    display: flex;
-                                    flex-direction: column;
-                                    align-items: center;
-                                    justify-content: center;
-                                    .icons-gif{
-                                        display: none;
-                                        margin: 0.69rem 0.75rem 0 0;
-                                        align-self: flex-end;
-                                        position: absolute;
-                                        top: 0;
-                                        .icon-icon-download{
-                                            font-size: 2rem;
-                                            position: relative;
-                                            opacity: 0.7;
-                                            cursor: pointer;
-                                            .path2{
-                                                position: absolute;
-                                                left: 2rem;
-                                            }
-                                        }
-                                        .icon-icon-download:hover{
-                                            opacity: 1;
-                                        }
-                                        .icon-icon-link-hover{
-                                            font-size: 2rem;
-                                            position: relative;
-                                            opacity: 0.7;
-                                            cursor: pointer;
-                                            .path2{
-                                                position: absolute;
-                                                left: 2rem;
-                                            }
-                                        }
-                                        .icon-icon-link-hover:hover{
-                                            opacity: 1;
-                                        }
-                                    }
-                                    .loader{
-                                        height: 1.38rem;
-                                        width: 1.38rem;
-                                        margin-bottom: 0.63rem;
-                                        animation: 3s loading linear infinite;
-                                    }
-                                    @keyframes loading {
-                                        from{
-                                            transform: rotate(0deg);
-                                        }
-                                        to{
-                                            transform: rotate(360deg);
-                                        }
-                                    }
-                                    .check{
-                                        display: none;
-                                        margin-bottom: 0.88rem;
-                                    }
-                                    p{
-                                        font-family: $monserratFont;
-                                        font-weight: bold;
-                                        color: $backgroundColor;
-                                        font-size: 0.94rem;
-                                        letter-spacing: 0;
-                                        line-height: 1.19rem;
-                                    }
-                                }
+                                top: -7.7rem;
+                            }
+                            .gifo-container{
+                                width: 94%;
+                                height: 21.7rem;
+                                top: -7.7rem;
                             }
                         }
                     }
                     .steps-elements{
                         .creator-bar{
                             display: block;
+                        }
+                        .timer{
+                            margin-top: 1.81rem;
+                            position: absolute;
+                            bottom: 6.45rem;
+                            right: 3.3rem;
+                        }
+                        .timer-text{
+                            margin-top: 1.81rem;
+                            position: absolute;
+                            bottom: 6.45rem;
+                            right: 3.3rem;
                         }
                     }
                 }
@@ -746,11 +681,11 @@ body{
                 height: 5.63rem;
                 display: flex;
                 justify-content: space-between;
-                .logo{
-                    margin: 1.13rem 0 0.81rem 3rem;
-                    .logo-svg{
-                        height: 3.69rem;
-                        width: 3.69rem;
+                .logo-container{
+                    .logo-img{
+                        position: unset;
+                        margin: 1.13rem 0 0.81rem 3rem;
+                        transform: unset;
                     } 
                 }
                 .hamMenu{
@@ -779,14 +714,14 @@ body{
                             line-height: 1rem;
                             margin: 0;
                             text-transform: uppercase;
-                            a{
-                                color: $mainColor;
-                            }
+                        }
+                        a{
+                            color: var(--mainColor);
                         }
                         li:nth-child(2n + 3){
                             margin: 0;
                         }
-                        .new-gifos-button{
+                        .li-create{
                             display: block;
                         }
                         .creator{
@@ -828,15 +763,35 @@ body{
                             left: 38.8rem;
                         }
                         .content-camera-area{
-                            position: relative;
                             bottom: 6rem;
-                            margin: 0;
+                            .get-video{
+                                width: 94%;
+                                height: 21.7rem;
+                                top: -7.7rem;
+                            }
+                            .gifo-container{
+                                width: 94%;
+                                height: 21.7rem;
+                                top: -7.7rem;
+                            }
                         }
                     }
                     .steps-elements{
                         .creator-bar{
                             display: block;
                             width: 45rem;
+                        }
+                        .timer{
+                            margin-top: 1.81rem;
+                            position: absolute;
+                            bottom: 6.45rem;
+                            right: 3.3rem;
+                        }
+                        .timer-text{
+                            margin-top: 1.81rem;
+                            position: absolute;
+                            bottom: 6.45rem;
+                            right: 3.3rem;
                         }
                     }
                 }

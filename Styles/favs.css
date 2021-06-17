@@ -12,6 +12,7 @@
   --reel-small: url(../Img/element_cinta1.svg);
   --reel-medium: url(../Img/element_cinta2.svg);
   --reel: url(../Img/pelicula.svg);
+  --logo: url(../Img/logo.svg);
 }
 
 .theme--dark {
@@ -27,6 +28,7 @@
   --reel-small: url(../Img/element_cinta1-modo-noc.svg);
   --reel-medium: url(../Img/element_cinta2-modo-noc.svg);
   --reel: url(../Img/pelicula-modo-noc.svg);
+  --logo: url(../Img/logo-noc.svg);
 }
 
 * {
@@ -45,8 +47,7 @@ body .expand-elements {
   display: block;
   height: 100%;
   width: 100%;
-  background: -webkit-gradient(linear, left bottom, left top, from(var(--backgroundColor)), to(var(--backgroundColorGradient)));
-  background: linear-gradient(0deg, var(--backgroundColor) 0%, var(--backgroundColorGradient) 100%);
+  background-color: var(--backgroundColorGradient);
   z-index: 3;
   position: absolute;
 }
@@ -217,17 +218,20 @@ body header nav {
   height: 5.938rem;
 }
 
-body header nav .logo {
-  margin: 1.81rem 0 1.08rem 1.38rem;
+body header nav .logo-container {
+  position: relative;
 }
 
-body header nav .logo .logo-svg {
-  height: 3.05rem;
-  width: 3.05rem;
-}
-
-body header nav .logo .logo-svg #GIFOS {
-  fill: var(--mainColor);
+body header nav .logo-container .logo-img {
+  position: absolute;
+  top: -0.75rem;
+  left: -0.65rem;
+  background-image: var(--logo);
+  height: 3.69rem;
+  width: 3.89rem;
+  margin: 1.81rem 0 1.81rem 1.38rem;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
 }
 
 body header nav .hamMenu .burguer-icon {
@@ -318,19 +322,19 @@ body header nav .hamMenu .menu li:nth-child(2n + 3) {
   margin: 0.87rem 0 0.69rem 0;
 }
 
-body header nav .hamMenu .menu a {
-  text-decoration: none;
+body header nav .hamMenu .menu .li-create {
+  display: none;
 }
 
-body header nav .hamMenu .menu a .new-gifos-button {
-  display: none;
+body header nav .hamMenu .menu .li-create .new-gifos-button {
+  display: block;
   height: 3.38rem;
   width: 3.38rem;
   border-radius: 100%;
   border: 1px solid var(--mainColor);
 }
 
-body header nav .hamMenu .menu a .new-gifos-button span {
+body header nav .hamMenu .menu .li-create .new-gifos-button span {
   font-size: 2rem;
   font-weight: lighter;
   position: relative;
@@ -338,13 +342,22 @@ body header nav .hamMenu .menu a .new-gifos-button span {
   color: var(--mainColor);
 }
 
-body header nav .hamMenu .menu a .new-gifos-button:hover {
+body header nav .hamMenu .menu .li-create .new-gifos-button:hover {
   background-color: var(--mainColor);
   border-bottom: 2px solid var(--mainColor);
 }
 
-body header nav .hamMenu .menu a .new-gifos-button:hover span {
+body header nav .hamMenu .menu .li-create .new-gifos-button:hover span {
   color: var(--backgroundColor);
+}
+
+body header nav .hamMenu .menu .li-create:hover {
+  border-bottom: unset;
+}
+
+body header nav .hamMenu .menu a {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 body header nav .hamMenu .menu li:nth-child(3) {
@@ -989,12 +1002,11 @@ body footer .blue-bar-bot {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  body header nav .logo {
+  body header nav .logo-container .logo-img {
+    position: unset;
     margin: 1.13rem 0 0.81rem 9.75rem;
-  }
-  body header nav .logo .logo-svg {
-    height: 3.69rem;
-    width: 3.69rem;
+    -webkit-transform: unset;
+            transform: unset;
   }
   body header nav .hamMenu .burguer-icon span {
     display: none;
@@ -1024,13 +1036,16 @@ body footer .blue-bar-bot {
     margin: 0;
     text-transform: uppercase;
   }
+  body header nav .hamMenu .menu a {
+    color: var(--mainColor);
+  }
   body header nav .hamMenu .menu li:nth-child(2n + 3) {
     margin: 0;
   }
-  body header nav .hamMenu .menu li:nth-child(1) {
+  body header nav .hamMenu .menu .li-create {
     display: block;
   }
-  body header nav .hamMenu .menu .creator:nth-last-child(1) {
+  body header nav .hamMenu .menu .creator:nth-last-child(2) {
     display: none;
   }
   body main {
@@ -1256,12 +1271,11 @@ body footer .blue-bar-bot {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  body header nav .logo {
+  body header nav .logo-container .logo-img {
+    position: unset;
     margin: 1.13rem 0 0.81rem 3rem;
-  }
-  body header nav .logo .logo-svg {
-    height: 3.69rem;
-    width: 3.69rem;
+    -webkit-transform: unset;
+            transform: unset;
   }
   body header nav .hamMenu .burguer-icon span {
     display: none;
@@ -1291,16 +1305,16 @@ body footer .blue-bar-bot {
     margin: 0;
     text-transform: uppercase;
   }
-  body header nav .hamMenu .menu li a {
-    color: #572ee5;
+  body header nav .hamMenu .menu a {
+    color: var(--mainColor);
   }
   body header nav .hamMenu .menu li:nth-child(2n + 3) {
     margin: 0;
   }
-  body header nav .hamMenu .menu li:nth-child(1) {
+  body header nav .hamMenu .menu .li-create {
     display: block;
   }
-  body header nav .hamMenu .menu .creator:nth-last-child(1) {
+  body header nav .hamMenu .menu .creator:nth-last-child(2) {
     display: none;
   }
   body main {

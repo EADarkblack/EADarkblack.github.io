@@ -16,7 +16,6 @@ const inputIcon = document.querySelector(".input-icon");
 let titleSearch = document.querySelector(".title-search-elements");
 let totalResults = 0;
 export let windowWidth = window.innerWidth;
-let validate = true;
 
 // Functions
 
@@ -68,7 +67,7 @@ const showResults = function(data) {
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
-                            <span class="icon-icon-max-normal" id="exp-${data[i].id}">
+                            <span class="icon-icon-max-normal all-gifs" id="exp-${data[i].id}">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </span>
@@ -202,16 +201,12 @@ const resetInputSearch = function() {
  */
 
 const addBtnIconFav = function() {
-    if (validate) {
-        validate = false;
-        const content = document.querySelectorAll(".icon-icon-fav");
-        for (let i = 0; i < content.length; i++) {
-            content[i].addEventListener("click", () => {
-                api.addFavorite(content[i].id)
-            });
-        };
-    }
-    validate = true;
+    const content = document.querySelectorAll(".icon-icon-fav");
+    for (let i = 0; i < content.length; i++) {
+        content[i].addEventListener("click", () => {
+            api.addFavorite(content[i].id)
+        });
+    };
 }
 
 /**
@@ -304,7 +299,7 @@ export const expandGif = function(data) {
  * Adds the event to the X button when the gif is in fullscreen mode and reload the page when the user close a gif on the favorite section
  */
 
-const closeExpandView = function() {
+export const closeExpandView = function() {
     const close = document.querySelector(".close-icon");
     close.addEventListener("click", () => {
         const expandContainer = document.querySelector(".expand-view");
@@ -369,7 +364,7 @@ export const addDownloadBtn = function() {
  */
 
 export const addExpandBtn = function() {
-    const addExpandBtn = document.querySelectorAll(".icon-icon-max-normal");
+    const addExpandBtn = document.querySelectorAll(".all-gifs");
     for (let i = 0; i < addExpandBtn.length; i++) {
         const expandIdBtn = addExpandBtn[i].id;
         const idExpand = expandIdBtn.replace("exp-", "");
